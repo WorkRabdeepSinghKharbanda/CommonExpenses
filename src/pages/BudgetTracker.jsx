@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { useLocalState } from '../lib/useLocalState.js'
-import { formatCurrency } from '../lib/currency.js'
+import { useCurrency } from '../lib/CurrencyContext.jsx'
+import { downloadCSV } from '../lib/csv.js'
+import PageToolbar from '../components/PageToolbar.jsx'
 
 const CATEGORIES = ['Food', 'Rent', 'Transport', 'Utilities', 'Shopping', 'Health', 'Entertainment', 'Other']
 
 export default function BudgetTracker() {
+  const { format } = useCurrency()
   const [entries, setEntries] = useLocalState('budget.entries', [])
   const [form, setForm] = useState({ description: '', amount: '', type: 'expense', category: 'Food' })
 
@@ -29,11 +32,24 @@ export default function BudgetTracker() {
       return acc
     }, {})
 
+  const exportCSV = () =>
+    downloadCSV(
+      'budget-entries.csv',
+      entries.map((e) => ({
+        description: e.description,
+        type: e.type,
+        category: e.type === 'expense' ? e.category : '',
+        amount: e.amount,
+      }))
+    )
+
   return (
-    <div className="grid lg:grid-cols-3 gap-6">
+    <div>
+      <PageToolbar title="Budget Tracker" onExport={entries.length > 0 ? exportCSV : undefined} onClear={() => setEntries([])} />
+      <div className="grid lg:grid-cols-3 gap-6">
       <div className="lg:col-span-2 space-y-6">
         <div className="card">
-          <h2 className="font-semibold text-lg mb-4">Add entry</h2>
+          <h2 className="font-semibold text-lg mb-4 dark:text-white">Add entry</h2>
           <form onSubmit={addEntry} className="grid sm:grid-cols-2 gap-3">
             <input
               className="input sm:col-span-2"
@@ -69,17 +85,17 @@ export default function BudgetTracker() {
         </div>
 
         <div className="card">
-          <h2 className="font-semibold text-lg mb-3">History</h2>
-          <ul className="divide-y divide-slate-100">
+          <h2 className="font-semibold text-lg mb-3 dark:text-white">History</h2>
+          <ul className="divide-y divide-slate-100 dark:divide-slate-700">
             {entries.map((e) => (
               <li key={e.id} className="py-2 flex justify-between items-center text-sm">
                 <div>
                   <div className="font-medium">{e.description}</div>
-                  <div className="text-slate-500 text-xs">{e.type === 'expense' ? e.category : 'Income'}</div>
+                  <div className="text-slate-500 dark:text-slate-400 text-xs">{e.type === 'expense' ? e.category : 'Income'}</div>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className={e.type === 'income' ? 'text-emerald-600' : 'text-red-500'}>
-                    {e.type === 'income' ? '+' : '-'}{formatCurrency(e.amount)}
+                    {e.type === 'income' ? '+' : '-'}{format(e.amount)}
                   </span>
                   <button onClick={() => removeEntry(e.id)} className="text-slate-400 hover:text-red-500 text-xs">
                     remove
@@ -87,34 +103,35 @@ export default function BudgetTracker() {
                 </div>
               </li>
             ))}
-            {entries.length === 0 && <li className="text-sm text-slate-400 py-2">No entries yet.</li>}
+            {entries.length === 0 && <li className="text-sm text-slate-400 dark:text-slate-500 py-2">No entries yet.</li>}
           </ul>
         </div>
       </div>
 
       <div className="space-y-6">
         <div className="card space-y-2">
-          <h2 className="font-semibold text-lg mb-2">Summary</h2>
-          <div className="flex justify-between text-sm"><span>Income</span><span className="text-emerald-600">{formatCurrency(income)}</span></div>
-          <div className="flex justify-between text-sm"><span>Expenses</span><span className="text-red-500">{formatCurrency(expense)}</span></div>
-          <div className="flex justify-between font-semibold pt-2 border-t border-slate-100">
+          <h2 className="font-semibold text-lg mb-2 dark:text-white">Summary</h2>
+          <div className="flex justify-between text-sm"><span>Income</span><span className="text-emerald-600">{format(income)}</span></div>
+          <div className="flex justify-between text-sm"><span>Expenses</span><span className="text-red-500">{format(expense)}</span></div>
+          <div className="flex justify-between font-semibold pt-2 border-t border-slate-100 dark:border-slate-700">
             <span>Balance</span>
-            <span className={balance >= 0 ? 'text-emerald-600' : 'text-red-500'}>{formatCurrency(balance)}</span>
+            <span className={balance >= 0 ? 'text-emerald-600' : 'text-red-500'}>{format(balance)}</span>
           </div>
         </div>
 
         <div className="card space-y-2">
-          <h2 className="font-semibold text-lg mb-2">By category</h2>
-          {Object.entries(byCategory).length === 0 && <p className="text-sm text-slate-400">No expenses yet.</p>}
+          <h2 className="font-semibold text-lg mb-2 dark:text-white">By category</h2>
+          {Object.entries(byCategory).length === 0 && <p className="text-sm text-slate-400 dark:text-slate-500">No expenses yet.</p>}
           {Object.entries(byCategory)
             .sort((a, b) => b[1] - a[1])
             .map(([cat, amt]) => (
               <div key={cat} className="flex justify-between text-sm">
                 <span>{cat}</span>
-                <span>{formatCurrency(amt)}</span>
+                <span>{format(amt)}</span>
               </div>
             ))}
         </div>
+      </div>
       </div>
     </div>
   )

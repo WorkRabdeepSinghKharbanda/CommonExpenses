@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useLocalState } from '../lib/useLocalState.js'
-import { formatCurrency } from '../lib/currency.js'
+import { useCurrency } from '../lib/CurrencyContext.jsx'
+import { downloadCSV } from '../lib/csv.js'
+import PageToolbar from '../components/PageToolbar.jsx'
 
 function computeSettlements(people, expenses) {
   const net = Object.fromEntries(people.map((p) => [p, 0]))
@@ -36,6 +38,7 @@ function computeSettlements(people, expenses) {
 }
 
 export default function SplitExpense() {
+  const { format } = useCurrency()
   const [people, setPeople] = useLocalState('split.people', [])
   const [expenses, setExpenses] = useLocalState('split.expenses', [])
   const [personName, setPersonName] = useState('')
@@ -75,10 +78,28 @@ export default function SplitExpense() {
 
   const { net, settlements } = computeSettlements(people, expenses)
 
+  const exportCSV = () =>
+    downloadCSV(
+      'split-expenses.csv',
+      expenses.map((e) => ({
+        description: e.description,
+        amount: e.amount,
+        payer: e.payer,
+        participants: e.participants.join('; '),
+      }))
+    )
+
+  const clearAll = () => {
+    setPeople([])
+    setExpenses([])
+  }
+
   return (
-    <div className="grid lg:grid-cols-3 gap-6">
+    <div>
+      <PageToolbar title="Split Expense" onExport={expenses.length > 0 ? exportCSV : undefined} onClear={clearAll} />
+      <div className="grid lg:grid-cols-3 gap-6">
       <div className="card space-y-4">
-        <h2 className="font-semibold text-lg">People</h2>
+        <h2 className="font-semibold text-lg dark:text-white">People</h2>
         <form onSubmit={addPerson} className="flex gap-2">
           <input
             className="input"
@@ -97,12 +118,12 @@ export default function SplitExpense() {
               </button>
             </li>
           ))}
-          {people.length === 0 && <li className="text-sm text-slate-400">Add people to get started.</li>}
+          {people.length === 0 && <li className="text-sm text-slate-400 dark:text-slate-500">Add people to get started.</li>}
         </ul>
       </div>
 
       <div className="card space-y-4 lg:col-span-2">
-        <h2 className="font-semibold text-lg">Expenses</h2>
+        <h2 className="font-semibold text-lg dark:text-white">Expenses</h2>
         <form onSubmit={addExpense} className="grid sm:grid-cols-2 gap-3">
           <input
             className="input sm:col-span-2"
@@ -137,7 +158,7 @@ export default function SplitExpense() {
                 className={`px-3 py-1 rounded-full text-xs font-medium border ${
                   form.participants.includes(p)
                     ? 'bg-brand-600 text-white border-brand-600'
-                    : 'border-slate-300 text-slate-600'
+                    : 'border-slate-300 text-slate-600 dark:border-slate-600 dark:text-slate-300'
                 }`}
               >
                 {p}
@@ -149,13 +170,13 @@ export default function SplitExpense() {
           </button>
         </form>
 
-        <ul className="divide-y divide-slate-100">
+        <ul className="divide-y divide-slate-100 dark:divide-slate-700">
           {expenses.map((e) => (
             <li key={e.id} className="py-2 flex justify-between items-center text-sm">
               <div>
                 <div className="font-medium">{e.description}</div>
-                <div className="text-slate-500 text-xs">
-                  {e.payer} paid {formatCurrency(e.amount)} for {e.participants.join(', ')}
+                <div className="text-slate-500 dark:text-slate-400 text-xs">
+                  {e.payer} paid {format(e.amount)} for {e.participants.join(', ')}
                 </div>
               </div>
               <button onClick={() => removeExpense(e.id)} className="text-slate-400 hover:text-red-500 text-xs">
@@ -167,30 +188,31 @@ export default function SplitExpense() {
       </div>
 
       <div className="card space-y-3">
-        <h2 className="font-semibold text-lg">Balances</h2>
+        <h2 className="font-semibold text-lg dark:text-white">Balances</h2>
         {people.map((p) => (
           <div key={p} className="flex justify-between text-sm">
             <span>{p}</span>
             <span className={net[p] >= 0 ? 'text-emerald-600' : 'text-red-500'}>
-              {formatCurrency(net[p])}
+              {format(net[p])}
             </span>
           </div>
         ))}
       </div>
 
       <div className="card space-y-3 lg:col-span-2">
-        <h2 className="font-semibold text-lg">Settle up</h2>
-        {settlements.length === 0 && <p className="text-sm text-slate-400">Everyone is settled up.</p>}
+        <h2 className="font-semibold text-lg dark:text-white">Settle up</h2>
+        {settlements.length === 0 && <p className="text-sm text-slate-400 dark:text-slate-500">Everyone is settled up.</p>}
         <ul className="space-y-2">
           {settlements.map((s, i) => (
             <li key={i} className="text-sm flex items-center gap-2">
               <span className="font-medium">{s.from}</span>
-              <span className="text-slate-400">owes</span>
+              <span className="text-slate-400 dark:text-slate-500">owes</span>
               <span className="font-medium">{s.to}</span>
-              <span className="ml-auto font-semibold">{formatCurrency(s.amount)}</span>
+              <span className="ml-auto font-semibold">{format(s.amount)}</span>
             </li>
           ))}
         </ul>
+      </div>
       </div>
     </div>
   )

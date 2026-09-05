@@ -1,6 +1,8 @@
-import { useState } from 'react'
 import { useLocalState } from '../lib/useLocalState.js'
-import { formatCurrency } from '../lib/currency.js'
+import { useCurrency } from '../lib/CurrencyContext.jsx'
+import PageToolbar from '../components/PageToolbar.jsx'
+
+const DEFAULT_FORM = { target: '10000', current: '0', months: '12', annualRate: '0' }
 
 function requiredMonthlySaving({ target, current, months, annualRate }) {
   const r = annualRate / 100 / 12
@@ -12,12 +14,8 @@ function requiredMonthlySaving({ target, current, months, annualRate }) {
 }
 
 export default function SavingsGoal() {
-  const [form, setForm] = useLocalState('savings.form', {
-    target: '10000',
-    current: '0',
-    months: '12',
-    annualRate: '0',
-  })
+  const { format } = useCurrency()
+  const [form, setForm] = useLocalState('savings.form', DEFAULT_FORM)
 
   const target = parseFloat(form.target) || 0
   const current = parseFloat(form.current) || 0
@@ -28,11 +26,13 @@ export default function SavingsGoal() {
     months > 0 ? requiredMonthlySaving({ target, current, months, annualRate }) : 0
 
   return (
-    <div className="grid lg:grid-cols-2 gap-6">
+    <div>
+      <PageToolbar title="Savings Goal" onClear={() => setForm(DEFAULT_FORM)} />
+      <div className="grid lg:grid-cols-2 gap-6">
       <div className="card space-y-4">
-        <h2 className="font-semibold text-lg">Your goal</h2>
+        <h2 className="font-semibold text-lg dark:text-white">Your goal</h2>
         <label className="block text-sm space-y-1">
-          <span className="text-slate-600">Target amount</span>
+          <span className="text-slate-600 dark:text-slate-300">Target amount</span>
           <input
             className="input"
             type="number"
@@ -41,7 +41,7 @@ export default function SavingsGoal() {
           />
         </label>
         <label className="block text-sm space-y-1">
-          <span className="text-slate-600">Current savings</span>
+          <span className="text-slate-600 dark:text-slate-300">Current savings</span>
           <input
             className="input"
             type="number"
@@ -50,7 +50,7 @@ export default function SavingsGoal() {
           />
         </label>
         <label className="block text-sm space-y-1">
-          <span className="text-slate-600">Months to reach goal</span>
+          <span className="text-slate-600 dark:text-slate-300">Months to reach goal</span>
           <input
             className="input"
             type="number"
@@ -59,7 +59,7 @@ export default function SavingsGoal() {
           />
         </label>
         <label className="block text-sm space-y-1">
-          <span className="text-slate-600">Expected annual return (%, optional)</span>
+          <span className="text-slate-600 dark:text-slate-300">Expected annual return (%, optional)</span>
           <input
             className="input"
             type="number"
@@ -71,14 +71,15 @@ export default function SavingsGoal() {
       </div>
 
       <div className="card flex flex-col justify-center items-center text-center space-y-2">
-        <span className="text-sm text-slate-500">You need to save</span>
-        <span className="text-4xl font-bold text-brand-600">{formatCurrency(monthly)}</span>
-        <span className="text-sm text-slate-500">per month for {months || 0} months</span>
-        <div className="w-full pt-6 mt-4 border-t border-slate-100 text-sm text-slate-600 space-y-1">
-          <div className="flex justify-between"><span>Target</span><span>{formatCurrency(target)}</span></div>
-          <div className="flex justify-between"><span>Already saved</span><span>{formatCurrency(current)}</span></div>
-          <div className="flex justify-between"><span>Remaining</span><span>{formatCurrency(Math.max(target - current, 0))}</span></div>
+        <span className="text-sm text-slate-500 dark:text-slate-400">You need to save</span>
+        <span className="text-4xl font-bold text-brand-600">{format(monthly)}</span>
+        <span className="text-sm text-slate-500 dark:text-slate-400">per month for {months || 0} months</span>
+        <div className="w-full pt-6 mt-4 border-t border-slate-100 dark:border-slate-700 text-sm text-slate-600 dark:text-slate-300 space-y-1">
+          <div className="flex justify-between"><span>Target</span><span>{format(target)}</span></div>
+          <div className="flex justify-between"><span>Already saved</span><span>{format(current)}</span></div>
+          <div className="flex justify-between"><span>Remaining</span><span>{format(Math.max(target - current, 0))}</span></div>
         </div>
+      </div>
       </div>
     </div>
   )

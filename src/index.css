@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply dark:bg-slate-900 dark:text-slate-100 transition-colors;
+}
+
 .card {
-  @apply bg-white rounded-2xl shadow-sm border border-slate-200 p-6;
+  @apply bg-white rounded-2xl shadow-sm border border-slate-200 p-6 dark:bg-slate-800 dark:border-slate-700;
 }
 
 .input {
-  @apply w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500;
+  @apply w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 dark:bg-slate-900 dark:border-slate-600 dark:text-slate-100;
 }
 
 .btn-primary {
@@ -15,5 +19,5 @@
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 transition-colors;
+  @apply inline-flex items-center justify-center rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 transition-colors dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700;
 }
