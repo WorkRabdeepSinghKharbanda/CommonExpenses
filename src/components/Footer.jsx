@@ -1,0 +1,10 @@
+export default function Footer() {
+  return (
+    <footer className="border-t border-slate-200 mt-16">
+      <div className="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-500 flex flex-col sm:flex-row justify-between gap-2">
+        <span>© {new Date().getFullYear()} Common Expenses Tracker</span>
+        <span>All data stays in your browser — nothing is sent to a server.</span>
+      </div>
+    </footer>
+  )
+}
