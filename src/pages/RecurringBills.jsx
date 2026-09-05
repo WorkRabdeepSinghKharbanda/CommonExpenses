@@ -23,22 +23,42 @@ export default function RecurringBills() {
   const [bills, setBills] = useLocalState('bills.list', [])
   const [form, setForm] = useState({ name: '', amount: '', frequency: 'monthly', dueDay: '1' })
   const [search, setSearch] = useState('')
+  const [editingId, setEditingId] = useState(null)
 
-  const addBill = (e) => {
+  const resetForm = () => {
+    setForm({ name: '', amount: '', frequency: 'monthly', dueDay: '1' })
+    setEditingId(null)
+  }
+
+  const submitBill = (e) => {
     e.preventDefault()
     const amount = parseFloat(form.amount)
     const dueDay = parseInt(form.dueDay, 10)
     if (!form.name.trim() || !amount || Number.isNaN(dueDay)) return
-    setBills([...bills, { ...form, amount, dueDay, id: Date.now() }])
-    setForm({ name: '', amount: '', frequency: 'monthly', dueDay: '1' })
+    if (editingId) {
+      setBills(bills.map((b) => (b.id === editingId ? { ...form, amount, dueDay, id: editingId } : b)))
+    } else {
+      setBills([...bills, { ...form, amount, dueDay, id: Date.now() }])
+    }
+    resetForm()
   }
 
-  const removeBill = (id) => setBills(bills.filter((b) => b.id !== id))
+  const startEdit = (bill) => {
+    setForm({ name: bill.name, amount: String(bill.amount), frequency: bill.frequency, dueDay: String(bill.dueDay) })
+    setEditingId(bill.id)
+  }
+
+  const removeBill = (id) => {
+    setBills(bills.filter((b) => b.id !== id))
+    if (editingId === id) resetForm()
+  }
 
   const monthlyTotal = bills.reduce((sum, b) => sum + b.amount * FREQUENCIES[b.frequency], 0)
   const upcoming = [...bills]
     .map((b) => ({ ...b, next: nextDueDate(b.dueDay, b.frequency) }))
     .sort((a, b) => a.next - b.next)
+
+  const isDueSoon = (next) => (next - new Date()) / (1000 * 60 * 60 * 24) <= 7
 
   const dueDayLabel = (freq) => (freq === 'weekly' ? 'Day of week (0=Sun)' : 'Day of month')
 
@@ -53,8 +73,8 @@ export default function RecurringBills() {
       <PageToolbar title="Recurring Bills" onExport={bills.length > 0 ? exportCSV : undefined} onClear={() => setBills([])} />
       <div className="grid lg:grid-cols-3 gap-6">
       <div className="card space-y-4">
-        <h2 className="font-semibold text-lg dark:text-white">Add a bill</h2>
-        <form onSubmit={addBill} className="space-y-3">
+        <h2 className="font-semibold text-lg dark:text-white">{editingId ? 'Edit bill' : 'Add a bill'}</h2>
+        <form onSubmit={submitBill} className="space-y-3">
           <input
             className="input"
             placeholder="Name (e.g. Netflix)"
@@ -85,7 +105,14 @@ export default function RecurringBills() {
             value={form.dueDay}
             onChange={(e) => setForm({ ...form, dueDay: e.target.value })}
           />
-          <button className="btn-primary w-full">Add bill</button>
+          <div className="flex gap-2">
+            <button className="btn-primary flex-1">{editingId ? 'Save changes' : 'Add bill'}</button>
+            {editingId && (
+              <button type="button" onClick={resetForm} className="btn-secondary">
+                Cancel
+              </button>
+            )}
+          </div>
         </form>
       </div>
 
@@ -105,13 +132,23 @@ export default function RecurringBills() {
             .map((b) => (
             <li key={b.id} className="py-2 flex justify-between items-center text-sm">
               <div>
-                <div className="font-medium">{b.name}</div>
+                <div className="font-medium flex items-center gap-2">
+                  {b.name}
+                  {isDueSoon(b.next) && (
+                    <span className="text-[10px] font-semibold uppercase tracking-wide text-amber-700 bg-amber-100 dark:text-amber-300 dark:bg-amber-500/20 rounded-full px-2 py-0.5">
+                      Due soon
+                    </span>
+                  )}
+                </div>
                 <div className="text-slate-500 dark:text-slate-400 text-xs capitalize">
                   {b.frequency} · due {b.next.toLocaleDateString()}
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <span>{format(b.amount)}</span>
+                <button onClick={() => startEdit(b)} className="text-slate-400 hover:text-brand-600 text-xs">
+                  edit
+                </button>
                 <button onClick={() => removeBill(b.id)} className="text-slate-400 hover:text-red-500 text-xs">
                   remove
                 </button>

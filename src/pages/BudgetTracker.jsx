@@ -11,16 +11,34 @@ export default function BudgetTracker() {
   const [entries, setEntries] = useLocalState('budget.entries', [])
   const [form, setForm] = useState({ description: '', amount: '', type: 'expense', category: 'Food' })
   const [search, setSearch] = useState('')
+  const [editingId, setEditingId] = useState(null)
 
-  const addEntry = (e) => {
+  const resetForm = () => {
+    setForm({ description: '', amount: '', type: 'expense', category: 'Food' })
+    setEditingId(null)
+  }
+
+  const submitEntry = (e) => {
     e.preventDefault()
     const amount = parseFloat(form.amount)
     if (!form.description.trim() || !amount) return
-    setEntries([{ ...form, amount, id: Date.now() }, ...entries])
-    setForm({ description: '', amount: '', type: 'expense', category: 'Food' })
+    if (editingId) {
+      setEntries(entries.map((en) => (en.id === editingId ? { ...form, amount, id: editingId } : en)))
+    } else {
+      setEntries([{ ...form, amount, id: Date.now() }, ...entries])
+    }
+    resetForm()
   }
 
-  const removeEntry = (id) => setEntries(entries.filter((e) => e.id !== id))
+  const startEdit = (entry) => {
+    setForm({ description: entry.description, amount: String(entry.amount), type: entry.type, category: entry.category })
+    setEditingId(entry.id)
+  }
+
+  const removeEntry = (id) => {
+    setEntries(entries.filter((e) => e.id !== id))
+    if (editingId === id) resetForm()
+  }
 
   const income = entries.filter((e) => e.type === 'income').reduce((s, e) => s + e.amount, 0)
   const expense = entries.filter((e) => e.type === 'expense').reduce((s, e) => s + e.amount, 0)
@@ -50,8 +68,8 @@ export default function BudgetTracker() {
       <div className="grid lg:grid-cols-3 gap-6">
       <div className="lg:col-span-2 space-y-6">
         <div className="card">
-          <h2 className="font-semibold text-lg mb-4 dark:text-white">Add entry</h2>
-          <form onSubmit={addEntry} className="grid sm:grid-cols-2 gap-3">
+          <h2 className="font-semibold text-lg mb-4 dark:text-white">{editingId ? 'Edit entry' : 'Add entry'}</h2>
+          <form onSubmit={submitEntry} className="grid sm:grid-cols-2 gap-3">
             <input
               className="input sm:col-span-2"
               placeholder="Description"
@@ -81,7 +99,14 @@ export default function BudgetTracker() {
                 ))}
               </select>
             )}
-            <button className="btn-primary sm:col-span-2">Add entry</button>
+            <div className="sm:col-span-2 flex gap-2">
+              <button className="btn-primary flex-1">{editingId ? 'Save changes' : 'Add entry'}</button>
+              {editingId && (
+                <button type="button" onClick={resetForm} className="btn-secondary">
+                  Cancel
+                </button>
+              )}
+            </div>
           </form>
         </div>
 
@@ -108,6 +133,9 @@ export default function BudgetTracker() {
                   <span className={e.type === 'income' ? 'text-emerald-600' : 'text-red-500'}>
                     {e.type === 'income' ? '+' : '-'}{format(e.amount)}
                   </span>
+                  <button onClick={() => startEdit(e)} className="text-slate-400 hover:text-brand-600 text-xs">
+                    edit
+                  </button>
                   <button onClick={() => removeEntry(e.id)} className="text-slate-400 hover:text-red-500 text-xs">
                     remove
                   </button>

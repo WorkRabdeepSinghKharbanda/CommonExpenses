@@ -24,6 +24,7 @@ export default function SavingsGoal() {
 
   const monthly =
     months > 0 ? requiredMonthlySaving({ target, current, months, annualRate }) : 0
+  const progressPct = target > 0 ? Math.min((current / target) * 100, 100) : 0
 
   return (
     <div>
@@ -74,6 +75,15 @@ export default function SavingsGoal() {
         <span className="text-sm text-slate-500 dark:text-slate-400">You need to save</span>
         <span className="text-4xl font-bold text-brand-600">{format(monthly)}</span>
         <span className="text-sm text-slate-500 dark:text-slate-400">per month for {months || 0} months</span>
+        <div className="w-full space-y-1">
+          <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400">
+            <span>Progress</span>
+            <span>{progressPct.toFixed(0)}%</span>
+          </div>
+          <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+            <div className="h-full rounded-full bg-emerald-500" style={{ width: `${progressPct}%` }} />
+          </div>
+        </div>
         <div className="w-full pt-6 mt-4 border-t border-slate-100 dark:border-slate-700 text-sm text-slate-600 dark:text-slate-300 space-y-1">
           <div className="flex justify-between"><span>Target</span><span>{format(target)}</span></div>
           <div className="flex justify-between"><span>Already saved</span><span>{format(current)}</span></div>

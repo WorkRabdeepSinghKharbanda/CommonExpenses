@@ -158,7 +158,7 @@ export default function SplitExpense() {
               <option key={p} value={p}>{p}</option>
             ))}
           </select>
-          <div className="sm:col-span-2 flex flex-wrap gap-2">
+          <div className="sm:col-span-2 flex flex-wrap items-center gap-2">
             {people.map((p) => (
               <button
                 type="button"
@@ -173,6 +173,20 @@ export default function SplitExpense() {
                 {p}
               </button>
             ))}
+            {people.length > 0 && (
+              <button
+                type="button"
+                onClick={() =>
+                  setForm((f) => ({
+                    ...f,
+                    participants: f.participants.length === people.length ? [] : [...people],
+                  }))
+                }
+                className="text-xs text-brand-600 hover:underline ml-1"
+              >
+                {form.participants.length === people.length ? 'Clear all' : 'Select all'}
+              </button>
+            )}
           </div>
           <button className="btn-primary sm:col-span-2" disabled={people.length === 0}>
             Add expense
