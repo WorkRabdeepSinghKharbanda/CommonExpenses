@@ -22,6 +22,7 @@ export default function RecurringBills() {
   const { format } = useCurrency()
   const [bills, setBills] = useLocalState('bills.list', [])
   const [form, setForm] = useState({ name: '', amount: '', frequency: 'monthly', dueDay: '1' })
+  const [search, setSearch] = useState('')
 
   const addBill = (e) => {
     e.preventDefault()
@@ -89,9 +90,19 @@ export default function RecurringBills() {
       </div>
 
       <div className="card lg:col-span-2 space-y-3">
-        <h2 className="font-semibold text-lg dark:text-white">Upcoming</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="font-semibold text-lg dark:text-white">Upcoming</h2>
+          <input
+            className="input max-w-[10rem] py-1.5"
+            placeholder="Search..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
         <ul className="divide-y divide-slate-100 dark:divide-slate-700">
-          {upcoming.map((b) => (
+          {upcoming
+            .filter((b) => b.name.toLowerCase().includes(search.toLowerCase()))
+            .map((b) => (
             <li key={b.id} className="py-2 flex justify-between items-center text-sm">
               <div>
                 <div className="font-medium">{b.name}</div>

@@ -43,6 +43,7 @@ export default function SplitExpense() {
   const [expenses, setExpenses] = useLocalState('split.expenses', [])
   const [personName, setPersonName] = useState('')
   const [form, setForm] = useState({ description: '', amount: '', payer: '', participants: [] })
+  const [search, setSearch] = useState('')
 
   const addPerson = (e) => {
     e.preventDefault()
@@ -123,7 +124,15 @@ export default function SplitExpense() {
       </div>
 
       <div className="card space-y-4 lg:col-span-2">
-        <h2 className="font-semibold text-lg dark:text-white">Expenses</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="font-semibold text-lg dark:text-white">Expenses</h2>
+          <input
+            className="input max-w-[10rem] py-1.5"
+            placeholder="Search..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
         <form onSubmit={addExpense} className="grid sm:grid-cols-2 gap-3">
           <input
             className="input sm:col-span-2"
@@ -171,7 +180,9 @@ export default function SplitExpense() {
         </form>
 
         <ul className="divide-y divide-slate-100 dark:divide-slate-700">
-          {expenses.map((e) => (
+          {expenses
+            .filter((e) => e.description.toLowerCase().includes(search.toLowerCase()))
+            .map((e) => (
             <li key={e.id} className="py-2 flex justify-between items-center text-sm">
               <div>
                 <div className="font-medium">{e.description}</div>

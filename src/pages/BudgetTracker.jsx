@@ -10,6 +10,7 @@ export default function BudgetTracker() {
   const { format } = useCurrency()
   const [entries, setEntries] = useLocalState('budget.entries', [])
   const [form, setForm] = useState({ description: '', amount: '', type: 'expense', category: 'Food' })
+  const [search, setSearch] = useState('')
 
   const addEntry = (e) => {
     e.preventDefault()
@@ -85,9 +86,19 @@ export default function BudgetTracker() {
         </div>
 
         <div className="card">
-          <h2 className="font-semibold text-lg mb-3 dark:text-white">History</h2>
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="font-semibold text-lg dark:text-white">History</h2>
+            <input
+              className="input max-w-[10rem] py-1.5"
+              placeholder="Search..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
           <ul className="divide-y divide-slate-100 dark:divide-slate-700">
-            {entries.map((e) => (
+            {entries
+              .filter((e) => e.description.toLowerCase().includes(search.toLowerCase()))
+              .map((e) => (
               <li key={e.id} className="py-2 flex justify-between items-center text-sm">
                 <div>
                   <div className="font-medium">{e.description}</div>
@@ -119,17 +130,28 @@ export default function BudgetTracker() {
           </div>
         </div>
 
-        <div className="card space-y-2">
+        <div className="card space-y-3">
           <h2 className="font-semibold text-lg mb-2 dark:text-white">By category</h2>
           {Object.entries(byCategory).length === 0 && <p className="text-sm text-slate-400 dark:text-slate-500">No expenses yet.</p>}
-          {Object.entries(byCategory)
-            .sort((a, b) => b[1] - a[1])
-            .map(([cat, amt]) => (
-              <div key={cat} className="flex justify-between text-sm">
-                <span>{cat}</span>
-                <span>{format(amt)}</span>
-              </div>
-            ))}
+          {(() => {
+            const maxAmt = Math.max(...Object.values(byCategory), 1)
+            return Object.entries(byCategory)
+              .sort((a, b) => b[1] - a[1])
+              .map(([cat, amt]) => (
+                <div key={cat} className="space-y-1">
+                  <div className="flex justify-between text-sm">
+                    <span>{cat}</span>
+                    <span>{format(amt)}</span>
+                  </div>
+                  <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-brand-500"
+                      style={{ width: `${(amt / maxAmt) * 100}%` }}
+                    />
+                  </div>
+                </div>
+              ))
+          })()}
         </div>
       </div>
       </div>
