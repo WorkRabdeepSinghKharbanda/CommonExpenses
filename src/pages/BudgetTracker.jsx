@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 import { downloadCSV } from '../lib/csv.js'
+import { nonNegative } from '../lib/forms.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 
 const CATEGORIES = ['Food', 'Rent', 'Transport', 'Utilities', 'Shopping', 'Health', 'Entertainment', 'Other']
@@ -79,10 +80,12 @@ export default function BudgetTracker() {
             <input
               className="input"
               type="number"
+              min="0"
               step="0.01"
               placeholder="Amount"
               value={form.amount}
-              onChange={(e) => setForm({ ...form, amount: e.target.value })}
+              onChange={(e) => nonNegative(e.target.value) && setForm({ ...form, amount: e.target.value })}
+              onFocus={(e) => e.target.select()}
             />
             <select className="input" value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })}>
               <option value="expense">Expense</option>

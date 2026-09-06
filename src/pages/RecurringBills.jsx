@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 import { downloadCSV } from '../lib/csv.js'
+import { nonNegative } from '../lib/forms.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 
 const FREQUENCIES = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 }
@@ -84,10 +85,12 @@ export default function RecurringBills() {
           <input
             className="input"
             type="number"
+            min="0"
             step="0.01"
             placeholder="Amount"
             value={form.amount}
-            onChange={(e) => setForm({ ...form, amount: e.target.value })}
+            onChange={(e) => nonNegative(e.target.value) && setForm({ ...form, amount: e.target.value })}
+            onFocus={(e) => e.target.select()}
           />
           <select
             className="input"
@@ -101,9 +104,12 @@ export default function RecurringBills() {
           <input
             className="input"
             type="number"
+            min="0"
+            max={form.frequency === 'weekly' ? '6' : '31'}
             placeholder={dueDayLabel(form.frequency)}
             value={form.dueDay}
-            onChange={(e) => setForm({ ...form, dueDay: e.target.value })}
+            onChange={(e) => nonNegative(e.target.value) && setForm({ ...form, dueDay: e.target.value })}
+            onFocus={(e) => e.target.select()}
           />
           <div className="flex gap-2">
             <button className="btn-primary flex-1">{editingId ? 'Save changes' : 'Add bill'}</button>

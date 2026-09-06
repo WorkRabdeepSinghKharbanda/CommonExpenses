@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 import { downloadCSV } from '../lib/csv.js'
+import { nonNegative } from '../lib/forms.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 
 function computeSettlements(people, expenses) {
@@ -144,9 +145,11 @@ export default function SplitExpense() {
             className="input"
             placeholder="Amount"
             type="number"
+            min="0"
             step="0.01"
             value={form.amount}
-            onChange={(e) => setForm({ ...form, amount: e.target.value })}
+            onChange={(e) => nonNegative(e.target.value) && setForm({ ...form, amount: e.target.value })}
+            onFocus={(e) => e.target.select()}
           />
           <select
             className="input"
