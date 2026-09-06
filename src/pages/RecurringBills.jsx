@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 import { downloadCSV } from '../lib/csv.js'
-import { nonNegative } from '../lib/forms.js'
+import { nonNegative, inRange } from '../lib/forms.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 
 const FREQUENCIES = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 }
@@ -108,7 +108,10 @@ export default function RecurringBills() {
             max={form.frequency === 'weekly' ? '6' : '31'}
             placeholder={dueDayLabel(form.frequency)}
             value={form.dueDay}
-            onChange={(e) => nonNegative(e.target.value) && setForm({ ...form, dueDay: e.target.value })}
+            onChange={(e) => {
+              const max = form.frequency === 'weekly' ? 6 : 31
+              if (inRange(e.target.value, 0, max)) setForm({ ...form, dueDay: e.target.value })
+            }}
             onFocus={(e) => e.target.select()}
           />
           <div className="flex gap-2">

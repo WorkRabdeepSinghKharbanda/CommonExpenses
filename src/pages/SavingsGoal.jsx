@@ -1,6 +1,6 @@
 import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
-import { nonNegative } from '../lib/forms.js'
+import { nonNegative, inRange } from '../lib/forms.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 
 const DEFAULT_FORM = { target: '10000', current: '0', months: '12', annualRate: '0' }
@@ -62,7 +62,7 @@ export default function SavingsGoal() {
             type="number"
             min="1"
             value={form.months}
-            onChange={(e) => nonNegative(e.target.value) && setForm({ ...form, months: e.target.value })}
+            onChange={(e) => inRange(e.target.value, 1, Infinity) && setForm({ ...form, months: e.target.value })}
             onFocus={(e) => e.target.select()}
           />
         </label>
