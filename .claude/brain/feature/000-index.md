@@ -10,3 +10,4 @@ index from there if they ever disagree.
 | 003 | [Budget Tracker](003-budget-tracker.md) | `/budget` | `src/pages/BudgetTracker.jsx` |
 | 004 | [Recurring Bills](004-recurring-bills.md) | `/bills` | `src/pages/RecurringBills.jsx` |
 | 005 | [Savings Goal](005-savings-goal.md) | `/savings` | `src/pages/SavingsGoal.jsx` |
+| 006 | [Privacy Policy](006-privacy-policy.md) | `/privacy` | `src/pages/PrivacyPolicy.jsx` |

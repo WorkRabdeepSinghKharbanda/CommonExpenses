@@ -4,15 +4,18 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { ThemeProvider } from './lib/ThemeContext.jsx'
 import { CurrencyProvider } from './lib/CurrencyContext.jsx'
+import { ConsentProvider } from './lib/ConsentContext.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
       <CurrencyProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <ConsentProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ConsentProvider>
       </CurrencyProvider>
     </ThemeProvider>
   </React.StrictMode>

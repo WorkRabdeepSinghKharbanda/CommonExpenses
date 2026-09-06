@@ -5,6 +5,7 @@ import SplitExpense from './pages/SplitExpense.jsx'
 import BudgetTracker from './pages/BudgetTracker.jsx'
 import RecurringBills from './pages/RecurringBills.jsx'
 import SavingsGoal from './pages/SavingsGoal.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/budget" element={<BudgetTracker />} />
         <Route path="/bills" element={<RecurringBills />} />
         <Route path="/savings" element={<SavingsGoal />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>
     </Layout>
   )
