@@ -1,5 +1,4 @@
-// Replace with the real publisher ID once signed up at adsense.google.com.
-export const ADSENSE_PUBLISHER_ID = 'ca-pub-0000000000000000'
+export const ADSENSE_PUBLISHER_ID = 'ca-pub-5852027898822024'
 
 export function isAdsConfigured() {
   return ADSENSE_PUBLISHER_ID !== 'ca-pub-0000000000000000'
