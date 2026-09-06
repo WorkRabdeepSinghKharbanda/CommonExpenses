@@ -111,7 +111,7 @@ export default function BudgetTracker() {
         </div>
 
         <div className="card">
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
             <h2 className="font-semibold text-lg dark:text-white">History</h2>
             <input
               className="input max-w-[10rem] py-1.5"

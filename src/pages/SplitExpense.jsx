@@ -124,7 +124,7 @@ export default function SplitExpense() {
       </div>
 
       <div className="card space-y-4 lg:col-span-2">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="font-semibold text-lg dark:text-white">Expenses</h2>
           <input
             className="input max-w-[10rem] py-1.5"

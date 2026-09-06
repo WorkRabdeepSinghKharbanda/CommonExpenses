@@ -24,8 +24,8 @@ export default function Navbar() {
 
   return (
     <header className="border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-10 dark:bg-slate-900/80 dark:border-slate-700">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
-        <NavLink to="/" className="font-semibold text-lg text-slate-900 dark:text-slate-100 shrink-0">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
+        <NavLink to="/" className="font-semibold text-base sm:text-lg text-slate-900 dark:text-slate-100 shrink-0 truncate">
           Common<span className="text-brand-600">Expenses</span>
         </NavLink>
         <nav className="hidden sm:flex gap-1">
@@ -37,7 +37,7 @@ export default function Navbar() {
         </nav>
         <div className="flex items-center gap-2 shrink-0">
           <select
-            className="text-sm rounded-lg border border-slate-300 bg-white px-2 py-1.5 dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+            className="hidden sm:block text-base sm:text-sm rounded-lg border border-slate-300 bg-white px-2 py-1.5 dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
             value={currency}
             onChange={(e) => setCurrency(e.target.value)}
             aria-label="Currency"
@@ -48,7 +48,7 @@ export default function Navbar() {
           </select>
           <button
             onClick={toggleTheme}
-            className="w-9 h-9 rounded-lg border border-slate-300 flex items-center justify-center text-sm hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-800"
+            className="w-9 h-9 shrink-0 rounded-lg border border-slate-300 flex items-center justify-center text-sm hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-800"
             aria-label="Toggle theme"
             title="Toggle theme"
           >
@@ -56,7 +56,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={() => setMenuOpen((o) => !o)}
-            className="sm:hidden w-9 h-9 rounded-lg border border-slate-300 flex items-center justify-center dark:border-slate-600 dark:hover:bg-slate-800"
+            className="sm:hidden w-9 h-9 shrink-0 rounded-lg border border-slate-300 flex items-center justify-center dark:border-slate-600 dark:hover:bg-slate-800"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
@@ -65,13 +65,28 @@ export default function Navbar() {
         </div>
       </div>
       {menuOpen && (
-        <nav className="sm:hidden flex flex-col gap-1 px-4 pb-4">
-          {links.map((l) => (
-            <NavLink key={l.to} to={l.to} className={linkClass} onClick={() => setMenuOpen(false)}>
-              {l.label}
-            </NavLink>
-          ))}
-        </nav>
+        <div className="sm:hidden px-4 pb-4 space-y-3">
+          <nav className="flex flex-col gap-1">
+            {links.map((l) => (
+              <NavLink key={l.to} to={l.to} className={linkClass} onClick={() => setMenuOpen(false)}>
+                {l.label}
+              </NavLink>
+            ))}
+          </nav>
+          <label className="flex items-center justify-between text-sm text-slate-600 dark:text-slate-300">
+            <span>Currency</span>
+            <select
+              className="text-base rounded-lg border border-slate-300 bg-white px-2 py-1.5 dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100"
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
+              aria-label="Currency"
+            >
+              {Object.keys(currencies).map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          </label>
+        </div>
       )}
     </header>
   )

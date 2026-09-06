@@ -1,7 +1,7 @@
 export default function PageToolbar({ title, onExport, onClear }) {
   return (
-    <div className="flex items-center justify-between mb-6">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-white">{title}</h1>
+    <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+      <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">{title}</h1>
       <div className="flex gap-2">
         {onExport && (
           <button onClick={onExport} className="btn-secondary text-xs">
