@@ -41,6 +41,56 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://common-expenses-tracker.vercel.app/rent-split-calculator-different-room-sizes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/shared-utility-bill-splitter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/zero-based-budget-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/debt-payoff-snowball-vs-avalanche</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/vacation-savings-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/car-cost-splitting-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/irregular-income-budget-planner</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/couples-expense-tracker</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/grocery-expense-splitter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/group-gift-cost-splitter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://common-expenses-tracker.vercel.app/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -62,6 +112,56 @@
   </url>
   <url>
     <loc>https://common-expenses-tracker.vercel.app/blog/how-big-should-your-emergency-fund-be</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/splitting-rent-different-room-sizes</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/tracking-shared-utility-bills</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/cash-envelope-vs-app-budgeting</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/zero-based-budgeting-explained</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/how-to-negotiate-lower-bills</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/debt-snowball-vs-avalanche</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/saving-for-a-vacation</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/splitting-costs-for-a-shared-car</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/budgeting-with-irregular-income</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://common-expenses-tracker.vercel.app/blog/tracking-expenses-as-a-couple</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -15,3 +15,5 @@ index from there if they ever disagree.
 | 008 | [Budget Rule Guide](008-budget-rule-guide.md) | `/50-30-20-budget-rule` | `src/pages/guides/BudgetRuleGuide.jsx` |
 | 009 | [Savings Guide](009-savings-guide.md) | `/how-much-to-save-each-month` | `src/pages/guides/SavingsGuide.jsx` |
 | 010 | [Blog](010-blog.md) | `/blog`, `/blog/:slug` | `src/pages/blog/` |
+| 011 | [SEO Guides Batch 2](011-seo-guides-batch2.md) | 10 routes, see file | `src/pages/guides/` |
+| 012 | [Blog Batch 2](012-blog-batch2.md) | 10 routes, see file | `src/pages/blog/` |
