@@ -14,3 +14,4 @@ index from there if they ever disagree.
 | 007 | [Split Bills Guide](007-split-bills-guide.md) | `/split-bills-with-roommates` | `src/pages/guides/SplitBillsGuide.jsx` |
 | 008 | [Budget Rule Guide](008-budget-rule-guide.md) | `/50-30-20-budget-rule` | `src/pages/guides/BudgetRuleGuide.jsx` |
 | 009 | [Savings Guide](009-savings-guide.md) | `/how-much-to-save-each-month` | `src/pages/guides/SavingsGuide.jsx` |
+| 010 | [Blog](010-blog.md) | `/blog`, `/blog/:slug` | `src/pages/blog/` |

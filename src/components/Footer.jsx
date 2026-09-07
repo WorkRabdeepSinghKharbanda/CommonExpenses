@@ -10,6 +10,9 @@ export default function Footer() {
           <Link to="/split-bills-with-roommates" className="underline hover:text-slate-700 dark:hover:text-slate-200">
             Guides
           </Link>
+          <Link to="/blog" className="underline hover:text-slate-700 dark:hover:text-slate-200">
+            Blog
+          </Link>
           <Link to="/privacy" className="underline hover:text-slate-700 dark:hover:text-slate-200">
             Privacy Policy
           </Link>

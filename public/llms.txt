@@ -15,5 +15,10 @@
 - [The 50/30/20 budget rule, explained](https://common-expenses-tracker.vercel.app/50-30-20-budget-rule)
 - [How much to save each month](https://common-expenses-tracker.vercel.app/how-much-to-save-each-month)
 
+## Blog
+- [Audit your recurring bills](https://common-expenses-tracker.vercel.app/blog/audit-your-recurring-bills)
+- [Splitting expenses on a group trip](https://common-expenses-tracker.vercel.app/blog/splitting-expenses-on-a-group-trip)
+- [How big should your emergency fund be](https://common-expenses-tracker.vercel.app/blog/how-big-should-your-emergency-fund-be)
+
 ## Other
 - [Privacy Policy](https://common-expenses-tracker.vercel.app/privacy)
