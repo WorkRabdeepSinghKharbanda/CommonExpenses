@@ -11,3 +11,6 @@ index from there if they ever disagree.
 | 004 | [Recurring Bills](004-recurring-bills.md) | `/bills` | `src/pages/RecurringBills.jsx` |
 | 005 | [Savings Goal](005-savings-goal.md) | `/savings` | `src/pages/SavingsGoal.jsx` |
 | 006 | [Privacy Policy](006-privacy-policy.md) | `/privacy` | `src/pages/PrivacyPolicy.jsx` |
+| 007 | [Split Bills Guide](007-split-bills-guide.md) | `/split-bills-with-roommates` | `src/pages/guides/SplitBillsGuide.jsx` |
+| 008 | [Budget Rule Guide](008-budget-rule-guide.md) | `/50-30-20-budget-rule` | `src/pages/guides/BudgetRuleGuide.jsx` |
+| 009 | [Savings Guide](009-savings-guide.md) | `/how-much-to-save-each-month` | `src/pages/guides/SavingsGuide.jsx` |

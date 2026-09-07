@@ -1,0 +1,19 @@
+# Common Expenses Tracker
+
+> Free browser-based calculators for splitting bills, budgeting, tracking recurring
+> bills, and planning savings goals. No sign-up, no backend — all data stays in
+> localStorage on the visitor's device.
+
+## Calculators
+- [Split Expense](https://common-expenses-tracker.vercel.app/split): Split a bill among a group and see who owes who, with automatic settle-up.
+- [Budget Tracker](https://common-expenses-tracker.vercel.app/budget): Log income and expenses by category with a running balance.
+- [Recurring Bills](https://common-expenses-tracker.vercel.app/bills): Track subscriptions and bills, see upcoming due dates and true monthly total.
+- [Savings Goal](https://common-expenses-tracker.vercel.app/savings): Set a target and timeline, get the required monthly savings amount.
+
+## Guides
+- [How to split bills with roommates](https://common-expenses-tracker.vercel.app/split-bills-with-roommates)
+- [The 50/30/20 budget rule, explained](https://common-expenses-tracker.vercel.app/50-30-20-budget-rule)
+- [How much to save each month](https://common-expenses-tracker.vercel.app/how-much-to-save-each-month)
+
+## Other
+- [Privacy Policy](https://common-expenses-tracker.vercel.app/privacy)

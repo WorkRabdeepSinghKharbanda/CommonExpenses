@@ -1,4 +1,11 @@
+import { useSeo } from '../lib/useSeo.js'
+
 export default function PrivacyPolicy() {
+  useSeo({
+    title: 'Privacy Policy | Common Expenses Tracker',
+    description: 'How Common Expenses Tracker handles data: localStorage only, no backend, and how AdSense cookies work if you accept them.',
+    path: '/privacy',
+  })
   return (
     <div className="card max-w-2xl mx-auto space-y-4 text-sm text-slate-600 dark:text-slate-300">
       <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Privacy Policy</h1>

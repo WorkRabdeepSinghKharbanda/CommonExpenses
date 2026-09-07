@@ -3,6 +3,7 @@ import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 import { downloadCSV } from '../lib/csv.js'
 import { nonNegative } from '../lib/forms.js'
+import { useSeo } from '../lib/useSeo.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 
 function computeSettlements(people, expenses) {
@@ -39,6 +40,12 @@ function computeSettlements(people, expenses) {
 }
 
 export default function SplitExpense() {
+  useSeo({
+    title: 'Split Expense Calculator — Bill Splitter for Groups | Common Expenses Tracker',
+    description:
+      'Split bills among friends or roommates and see exactly who owes who, with automatic settle-up. Free, no sign-up, runs entirely in your browser.',
+    path: '/split',
+  })
   const { format } = useCurrency()
   const [people, setPeople] = useLocalState('split.people', [])
   const [expenses, setExpenses] = useLocalState('split.expenses', [])

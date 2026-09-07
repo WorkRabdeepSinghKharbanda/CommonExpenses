@@ -1,6 +1,7 @@
 import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 import { nonNegative, inRange } from '../lib/forms.js'
+import { useSeo } from '../lib/useSeo.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 
 const DEFAULT_FORM = { target: '10000', current: '0', months: '12', annualRate: '0' }
@@ -15,6 +16,12 @@ function requiredMonthlySaving({ target, current, months, annualRate }) {
 }
 
 export default function SavingsGoal() {
+  useSeo({
+    title: 'Savings Goal Calculator — Monthly Savings & SIP Planner | Common Expenses Tracker',
+    description:
+      'Set a target amount and timeline and find out how much to save each month, with optional expected returns. Free, no sign-up, all data stays in your browser.',
+    path: '/savings',
+  })
   const { format } = useCurrency()
   const [form, setForm] = useLocalState('savings.form', DEFAULT_FORM)
 

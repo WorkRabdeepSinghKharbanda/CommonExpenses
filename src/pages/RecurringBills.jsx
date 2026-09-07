@@ -3,6 +3,7 @@ import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 import { downloadCSV } from '../lib/csv.js'
 import { nonNegative, inRange } from '../lib/forms.js'
+import { useSeo } from '../lib/useSeo.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 
 const FREQUENCIES = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 }
@@ -20,6 +21,12 @@ function nextDueDate(dueDay, frequency) {
 }
 
 export default function RecurringBills() {
+  useSeo({
+    title: 'Recurring Bills Tracker — Subscription & Bill Calculator | Common Expenses Tracker',
+    description:
+      'Track subscriptions and recurring bills, see upcoming due dates and your true monthly total. Free, no sign-up, all data stays in your browser.',
+    path: '/bills',
+  })
   const { format } = useCurrency()
   const [bills, setBills] = useLocalState('bills.list', [])
   const [form, setForm] = useState({ name: '', amount: '', frequency: 'monthly', dueDay: '1' })

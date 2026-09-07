@@ -3,11 +3,18 @@ import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 import { downloadCSV } from '../lib/csv.js'
 import { nonNegative } from '../lib/forms.js'
+import { useSeo } from '../lib/useSeo.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 
 const CATEGORIES = ['Food', 'Rent', 'Transport', 'Utilities', 'Shopping', 'Health', 'Entertainment', 'Other']
 
 export default function BudgetTracker() {
+  useSeo({
+    title: 'Budget Tracker — Monthly Income & Expense Calculator | Common Expenses Tracker',
+    description:
+      'Log income and expenses by category, see a running balance and a by-category breakdown. Free, no sign-up, all data stays in your browser.',
+    path: '/budget',
+  })
   const { format } = useCurrency()
   const [entries, setEntries] = useLocalState('budget.entries', [])
   const [form, setForm] = useState({ description: '', amount: '', type: 'expense', category: 'Food' })

@@ -1,4 +1,12 @@
+import { Link } from 'react-router-dom'
 import FeatureCard from '../components/FeatureCard.jsx'
+import { useSeo } from '../lib/useSeo.js'
+
+const guides = [
+  { to: '/split-bills-with-roommates', label: 'How to split bills with roommates' },
+  { to: '/50-30-20-budget-rule', label: 'The 50/30/20 budget rule, explained' },
+  { to: '/how-much-to-save-each-month', label: 'How much to save each month' },
+]
 
 const features = [
   {
@@ -28,6 +36,12 @@ const features = [
 ]
 
 export default function Landing() {
+  useSeo({
+    title: 'Common Expenses Tracker — Split Bills, Budget, Bills & Savings Calculators',
+    description:
+      'Free calculators to split bills, track budgets, manage recurring bills, and plan savings goals. No sign-up, all data stays in your browser.',
+    path: '/',
+  })
   return (
     <div>
       <section className="text-center max-w-2xl mx-auto py-8">
@@ -47,6 +61,19 @@ export default function Landing() {
         {features.map((f) => (
           <FeatureCard key={f.to} {...f} />
         ))}
+      </section>
+
+      <section className="max-w-2xl mx-auto mt-16 space-y-3">
+        <h2 className="font-semibold text-lg text-center dark:text-white">Guides</h2>
+        <ul className="space-y-2 text-center">
+          {guides.map((g) => (
+            <li key={g.to}>
+              <Link to={g.to} className="text-brand-600 hover:underline text-sm">
+                {g.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   )
