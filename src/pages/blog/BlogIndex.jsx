@@ -15,7 +15,7 @@ export default function BlogIndex() {
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Blog</h1>
-      <AdSlot slotId="0000000000" />
+      <AdSlot slotId="3418754801" />
       <ul className="space-y-6">
         {sorted.map((p) => (
           <li key={p.slug} className="card space-y-1">

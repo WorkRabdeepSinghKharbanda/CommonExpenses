@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useSeo, useJsonLd } from '../lib/useSeo.js'
 import AdSlot from './AdSlot.jsx'
+import RelatedContent from './RelatedContent.jsx'
+import { POSTS } from '../pages/blog/posts.js'
 
 const BASE_URL = 'https://common-expenses-tracker.vercel.app'
 
@@ -32,7 +34,14 @@ export default function BlogPostLayout({ post, children }) {
         </time>
       </div>
       <div className="space-y-4 text-slate-600 dark:text-slate-300">{children}</div>
-      <AdSlot slotId="0000000000" />
+
+      <RelatedContent
+        heading="Related posts"
+        items={POSTS.map((p) => ({ to: `/blog/${p.slug}`, title: p.title }))}
+        currentPath={`/blog/${post.slug}`}
+      />
+
+      <AdSlot slotId="3418754801" />
     </article>
   )
 }

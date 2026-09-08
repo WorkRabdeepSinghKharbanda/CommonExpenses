@@ -64,7 +64,7 @@ export default function Landing() {
         ))}
       </section>
 
-      <AdSlot slotId="0000000000" />
+      <AdSlot slotId="3418754801" />
 
       <section className="max-w-2xl mx-auto mt-16 space-y-3">
         <h2 className="font-semibold text-lg text-center dark:text-white">Guides</h2>

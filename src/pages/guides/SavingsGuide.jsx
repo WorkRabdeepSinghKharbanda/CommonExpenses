@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { useSeo } from '../../lib/useSeo.js'
 import FaqSection from '../../components/FaqSection.jsx'
 import AdSlot from '../../components/AdSlot.jsx'
+import RelatedContent from '../../components/RelatedContent.jsx'
+import { GUIDES } from './guides.js'
 
 const FAQ = [
   {
@@ -49,7 +51,13 @@ export default function SavingsGuide() {
 
       <FaqSection id="faq-savings" items={FAQ} />
 
-      <AdSlot slotId="0000000000" />
+      <AdSlot slotId="3418754801" />
+
+      <RelatedContent
+        heading="Related guides"
+        items={GUIDES.map((g) => ({ to: g.route, title: g.title }))}
+        currentPath="/how-much-to-save-each-month"
+      />
 
       <Link to="/savings" className="btn-primary inline-block">
         Try the free savings goal calculator
