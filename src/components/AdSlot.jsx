@@ -1,10 +1,8 @@
 import { useEffect } from 'react'
 import { ADSENSE_PUBLISHER_ID, isAdsConfigured } from '../lib/adsense.js'
-import { useConsent } from '../lib/ConsentContext.jsx'
 
 export default function AdSlot({ slotId = '0000000000' }) {
-  const { consent } = useConsent()
-  const live = isAdsConfigured() && consent === 'accepted'
+  const live = isAdsConfigured()
 
   useEffect(() => {
     if (!live) return
@@ -15,22 +13,25 @@ export default function AdSlot({ slotId = '0000000000' }) {
     }
   }, [live])
 
-  if (!live) {
-    return (
-      <div className="card flex items-center justify-center h-24 text-xs text-slate-400 dark:text-slate-500">
-        Ad space
-      </div>
-    )
-  }
-
   return (
-    <ins
-      className="adsbygoogle block"
-      style={{ display: 'block' }}
-      data-ad-client={ADSENSE_PUBLISHER_ID}
-      data-ad-slot={slotId}
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-    />
+    <div className="flex flex-col items-center gap-1 my-2">
+      <span className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">
+        Advertisement
+      </span>
+      <div className="w-full min-h-[100px] rounded-lg border border-dashed border-slate-200 dark:border-slate-700 flex items-center justify-center overflow-hidden bg-slate-50/50 dark:bg-slate-800/30">
+        {live ? (
+          <ins
+            className="adsbygoogle block w-full"
+            style={{ display: 'block' }}
+            data-ad-client={ADSENSE_PUBLISHER_ID}
+            data-ad-slot={slotId}
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+        ) : (
+          <span className="text-xs text-slate-400 dark:text-slate-500">Ad space</span>
+        )}
+      </div>
+    </div>
   )
 }

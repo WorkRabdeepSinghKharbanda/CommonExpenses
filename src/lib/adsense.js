@@ -6,7 +6,7 @@ export function isAdsConfigured() {
 
 let scriptLoaded = false
 
-// Must only be called after the user accepts the cookie-consent banner (GDPR).
+// Loads unconditionally on app start, independent of the cookie-consent choice.
 export function loadAdsenseScript() {
   if (scriptLoaded || !isAdsConfigured()) return
   scriptLoaded = true

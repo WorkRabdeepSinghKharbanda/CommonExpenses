@@ -6,9 +6,10 @@ const ConsentContext = createContext(null)
 export function ConsentProvider({ children }) {
   const [consent, setConsent] = useState(() => localStorage.getItem('adConsent'))
 
+  // Loads regardless of accept/decline — the banner only records a preference.
   useEffect(() => {
-    if (consent === 'accepted') loadAdsenseScript()
-  }, [consent])
+    loadAdsenseScript()
+  }, [])
 
   const accept = () => {
     localStorage.setItem('adConsent', 'accepted')

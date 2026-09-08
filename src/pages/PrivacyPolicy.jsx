@@ -30,9 +30,10 @@ export default function PrivacyPolicy() {
       <section className="space-y-2">
         <h2 className="font-semibold text-slate-900 dark:text-white">Advertising</h2>
         <p>
-          If you accept the cookie banner, this site loads Google AdSense, which may use
-          cookies to show personalized ads based on your visits to this and other sites.
-          You can opt out of personalized advertising at{' '}
+          This site runs Google AdSense, which may use cookies to show ads based on your
+          visits to this and other sites. The cookie banner records your preference but
+          does not control whether the ad script loads. You can opt out of personalized
+          advertising at{' '}
           <a
             href="https://adssettings.google.com"
             target="_blank"
@@ -41,7 +42,7 @@ export default function PrivacyPolicy() {
           >
             adssettings.google.com
           </a>
-          . Declining the banner means no ad script loads and no ad cookies are set.
+          .
         </p>
       </section>
     </div>
