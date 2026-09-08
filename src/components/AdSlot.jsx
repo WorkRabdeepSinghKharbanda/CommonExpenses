@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { ADSENSE_PUBLISHER_ID, isAdsConfigured } from '../lib/adsense.js'
 
+// slotId "0000000000" is a placeholder — replace every call site with a real
+// ad-unit ID once one exists at adsense.google.com > Ads > By ad unit.
 export default function AdSlot({ slotId = '0000000000' }) {
   const live = isAdsConfigured()
 

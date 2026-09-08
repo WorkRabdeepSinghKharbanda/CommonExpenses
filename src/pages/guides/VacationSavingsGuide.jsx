@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useSeo } from '../../lib/useSeo.js'
 import FaqSection from '../../components/FaqSection.jsx'
+import AdSlot from '../../components/AdSlot.jsx'
 
 const FAQ = [
   {
@@ -57,6 +58,8 @@ export default function VacationSavingsGuide() {
       </section>
 
       <FaqSection id="faq-vacation-savings" items={FAQ} />
+
+      <AdSlot slotId="0000000000" />
 
       <Link to="/savings" className="btn-primary inline-block">
         Calculate your vacation savings

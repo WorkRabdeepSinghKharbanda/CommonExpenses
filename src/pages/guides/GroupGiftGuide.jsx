@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useSeo } from '../../lib/useSeo.js'
 import FaqSection from '../../components/FaqSection.jsx'
+import AdSlot from '../../components/AdSlot.jsx'
 
 const FAQ = [
   {
@@ -60,6 +61,8 @@ export default function GroupGiftGuide() {
       </section>
 
       <FaqSection id="faq-group-gift" items={FAQ} />
+
+      <AdSlot slotId="0000000000" />
 
       <Link to="/split" className="btn-primary inline-block">
         Split a group gift's cost

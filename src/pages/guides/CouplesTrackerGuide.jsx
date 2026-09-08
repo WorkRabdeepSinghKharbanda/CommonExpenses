@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useSeo } from '../../lib/useSeo.js'
 import FaqSection from '../../components/FaqSection.jsx'
+import AdSlot from '../../components/AdSlot.jsx'
 
 const FAQ = [
   {
@@ -58,6 +59,8 @@ export default function CouplesTrackerGuide() {
       </section>
 
       <FaqSection id="faq-couples-tracker" items={FAQ} />
+
+      <AdSlot slotId="0000000000" />
 
       <Link to="/split" className="btn-primary inline-block">
         Track expenses as a couple

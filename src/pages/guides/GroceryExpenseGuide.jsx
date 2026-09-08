@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useSeo } from '../../lib/useSeo.js'
 import FaqSection from '../../components/FaqSection.jsx'
+import AdSlot from '../../components/AdSlot.jsx'
 
 const FAQ = [
   {
@@ -61,6 +62,8 @@ export default function GroceryExpenseGuide() {
       </section>
 
       <FaqSection id="faq-grocery-split" items={FAQ} />
+
+      <AdSlot slotId="0000000000" />
 
       <Link to="/split" className="btn-primary inline-block">
         Split your grocery expenses

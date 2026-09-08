@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useSeo } from '../../lib/useSeo.js'
 import FaqSection from '../../components/FaqSection.jsx'
+import AdSlot from '../../components/AdSlot.jsx'
 
 const FAQ = [
   {
@@ -59,6 +60,8 @@ export default function ZeroBasedBudgetGuide() {
       </section>
 
       <FaqSection id="faq-zero-based-budget" items={FAQ} />
+
+      <AdSlot slotId="0000000000" />
 
       <Link to="/budget" className="btn-primary inline-block">
         Build your zero-based budget

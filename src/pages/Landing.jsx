@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import FeatureCard from '../components/FeatureCard.jsx'
+import AdSlot from '../components/AdSlot.jsx'
 import { useSeo } from '../lib/useSeo.js'
 
 const guides = [
@@ -62,6 +63,8 @@ export default function Landing() {
           <FeatureCard key={f.to} {...f} />
         ))}
       </section>
+
+      <AdSlot slotId="0000000000" />
 
       <section className="max-w-2xl mx-auto mt-16 space-y-3">
         <h2 className="font-semibold text-lg text-center dark:text-white">Guides</h2>
