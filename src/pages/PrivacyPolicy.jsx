@@ -3,7 +3,7 @@ import { useSeo } from '../lib/useSeo.js'
 export default function PrivacyPolicy() {
   useSeo({
     title: 'Privacy Policy | Common Expenses Tracker',
-    description: 'How Common Expenses Tracker handles data: localStorage only, no backend, and how AdSense cookies work if you accept them.',
+    description: 'How Common Expenses Tracker handles data: localStorage only, no backend, and how AdSense cookies work on this site.',
     path: '/privacy',
   })
   return (

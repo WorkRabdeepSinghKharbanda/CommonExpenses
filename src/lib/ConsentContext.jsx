@@ -1,15 +1,9 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-import { loadAdsenseScript } from './adsense.js'
+import { createContext, useContext, useState } from 'react'
 
 const ConsentContext = createContext(null)
 
 export function ConsentProvider({ children }) {
   const [consent, setConsent] = useState(() => localStorage.getItem('adConsent'))
-
-  // Loads regardless of accept/decline — the banner only records a preference.
-  useEffect(() => {
-    loadAdsenseScript()
-  }, [])
 
   const accept = () => {
     localStorage.setItem('adConsent', 'accepted')
