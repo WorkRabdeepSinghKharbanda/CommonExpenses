@@ -19,7 +19,14 @@
     <meta name="author" content="Common Expenses Tracker" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://common-expenses-tracker.vercel.app/" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%B0%3C/text%3E%3C/svg%3E" />
+    <!-- Real PNG/ICO favicons — a data-URI/SVG-only icon isn't renderable by most
+         link-preview crawlers (Slack, iMessage, Google, social cards), which
+         silently fall back to a generic platform icon instead. -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#4f46e5" />
     <meta name="google-adsense-account" content="ca-pub-5852027898822024" />
     <meta name="google-site-verification" content="kCnHcd-bJBBVDMlmVNxSUX0BeGjeyEf17j31SsQBwP8" />
@@ -31,18 +38,30 @@
     <meta property="og:title" content="Common Expenses Tracker — Split Bills, Budget, Bills & Savings Calculators" />
     <meta property="og:description" content="Free calculators to split bills, track budgets, manage recurring bills, and plan savings goals. No sign-up, all data stays in your browser." />
     <meta property="og:url" content="https://common-expenses-tracker.vercel.app/" />
-    <meta property="og:image" content="https://common-expenses-tracker.vercel.app/og-image.svg" />
+    <meta property="og:image" content="https://common-expenses-tracker.vercel.app/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Common Expenses Tracker — Split Bills, Budget, Bills & Savings Calculators" />
     <meta name="twitter:description" content="Free calculators to split bills, track budgets, manage recurring bills, and plan savings goals. No sign-up, all data stays in your browser." />
-    <meta name="twitter:image" content="https://common-expenses-tracker.vercel.app/og-image.svg" />
+    <meta name="twitter:image" content="https://common-expenses-tracker.vercel.app/og-image.png" />
 
     <!-- Structured data -->
+    <!-- WebSite schema, distinct from the WebApplication block below — this is
+         specifically what Google's site-name algorithm reads to decide what
+         brand name to show in search results. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Common Expenses Tracker",
+        "url": "https://common-expenses-tracker.vercel.app/"
+      }
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
