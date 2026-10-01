@@ -15,7 +15,9 @@ export default function Breadcrumbs({ trail }) {
       '@type': 'ListItem',
       position: i + 1,
       name: item.label,
-      item: `${BASE_URL}${item.to || ''}`,
+      // Per Google/schema.org guidance, the last (current-page) item can omit
+      // `item` entirely rather than pointing at a URL that isn't actually it.
+      ...(item.to ? { item: `${BASE_URL}${item.to}` } : {}),
     })),
   })
 
