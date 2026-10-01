@@ -1,13 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'splitting-rent-different-room-sizes',
-  title: 'How to split rent fairly when bedrooms are different sizes',
-  description:
-    "A method for splitting rent proportionally by room size and amenities, instead of splitting a shared apartment's rent evenly when it isn't fair.",
-  date: '2026-03-05',
-}
+const post = POSTS.find((p) => p.slug === 'splitting-rent-different-room-sizes')
 
 const FAQ = [
   {

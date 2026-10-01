@@ -1,13 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'tracking-shared-utility-bills',
-  title: 'Tracking shared utility bills without a monthly argument',
-  description:
-    'Why utility bills cause more roommate friction than rent, and a simple system for splitting and tracking them as they arrive.',
-  date: '2026-03-12',
-}
+const post = POSTS.find((p) => p.slug === 'tracking-shared-utility-bills')
 
 const FAQ = [
   {

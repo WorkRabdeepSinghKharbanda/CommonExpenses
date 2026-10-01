@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'debt-snowball-vs-avalanche',
-  title: "Debt snowball vs. debt avalanche: which pays off debt faster?",
-  description: "The math behind both debt payoff methods, why the mathematically optimal one isn't always the one that works, and how to pick between them.",
-  date: '2026-04-09',
-}
+const post = POSTS.find((p) => p.slug === 'debt-snowball-vs-avalanche')
 
 const FAQ = [
   {

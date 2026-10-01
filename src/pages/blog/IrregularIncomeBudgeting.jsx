@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'budgeting-with-irregular-income',
-  title: 'How to budget when your income changes every month',
-  description: 'A budgeting approach for freelancers and commission-based earners built around a baseline income instead of an average.',
-  date: '2026-04-30',
-}
+const post = POSTS.find((p) => p.slug === 'budgeting-with-irregular-income')
 
 const FAQ = [
   {

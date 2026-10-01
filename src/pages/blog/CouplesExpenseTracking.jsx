@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'tracking-expenses-as-a-couple',
-  title: 'Tracking shared expenses as a couple without merging every account',
-  description: 'A system for splitting and tracking shared costs as a couple while keeping separate accounts, including how to handle uneven incomes.',
-  date: '2026-05-07',
-}
+const post = POSTS.find((p) => p.slug === 'tracking-expenses-as-a-couple')
 
 const FAQ = [
   {

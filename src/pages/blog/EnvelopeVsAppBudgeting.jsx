@@ -1,13 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'cash-envelope-vs-app-budgeting',
-  title: 'Cash envelope method vs. app-based budgeting: which actually works?',
-  description:
-    'A comparison of the cash envelope system and digital budget tracking, and who each one actually fits.',
-  date: '2026-03-19',
-}
+const post = POSTS.find((p) => p.slug === 'cash-envelope-vs-app-budgeting')
 
 const FAQ = [
   {

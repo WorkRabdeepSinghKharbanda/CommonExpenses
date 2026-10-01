@@ -1,13 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'zero-based-budgeting-explained',
-  title: 'Zero-based budgeting explained: give every dollar a job',
-  description:
-    'How zero-based budgeting works, why it forces better spending decisions than a percentage rule, and how to start this month.',
-  date: '2026-03-26',
-}
+const post = POSTS.find((p) => p.slug === 'zero-based-budgeting-explained')
 
 const FAQ = [
   {

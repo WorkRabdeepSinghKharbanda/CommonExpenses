@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'splitting-costs-for-a-shared-car',
-  title: 'Splitting costs for a shared or carpooled car, fairly',
-  description: 'How to split gas, insurance, and maintenance for a car used by multiple people, based on usage instead of a flat split.',
-  date: '2026-04-23',
-}
+const post = POSTS.find((p) => p.slug === 'splitting-costs-for-a-shared-car')
 
 const FAQ = [
   {
