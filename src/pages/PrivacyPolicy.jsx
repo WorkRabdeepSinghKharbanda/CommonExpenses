@@ -1,4 +1,5 @@
 import { useSeo } from '../lib/useSeo.js'
+import Breadcrumbs from '../components/Breadcrumbs.jsx'
 
 export default function PrivacyPolicy() {
   useSeo({
@@ -7,7 +8,9 @@ export default function PrivacyPolicy() {
     path: '/privacy',
   })
   return (
-    <div className="card max-w-2xl mx-auto space-y-4 text-sm text-slate-600 dark:text-slate-300">
+    <div className="max-w-2xl mx-auto space-y-4">
+      <Breadcrumbs trail={[{ label: 'Privacy Policy' }]} />
+      <div className="card space-y-4 text-sm text-slate-600 dark:text-slate-300">
       <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Privacy Policy</h1>
 
       <section className="space-y-2">
@@ -45,6 +48,7 @@ export default function PrivacyPolicy() {
           .
         </p>
       </section>
+      </div>
     </div>
   )
 }
