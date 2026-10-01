@@ -1,6 +1,7 @@
 # Feature Inventory
 
-Source of truth: [src/App.jsx](../../../src/App.jsx) route table. Regenerate this
+Source of truth: [src/routes.js](../../../src/routes.js) (the `ROUTES` array — also
+feeds the router, sitemap generation, and build-time prerendering). Regenerate this
 index from there if they ever disagree.
 
 | # | Feature | Route | File |

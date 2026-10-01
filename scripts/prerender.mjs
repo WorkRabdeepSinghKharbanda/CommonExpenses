@@ -68,7 +68,7 @@ async function main() {
     }
 
     const jsonLdScripts = Object.entries(head.jsonld || {})
-      .map(([id, data]) => `<script type="application/ld+json" id="${id}">${JSON.stringify(data)}</script>`)
+      .map(([id, data]) => `<script type="application/ld+json" id="${id}">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`)
       .join('\n    ')
     if (jsonLdScripts) {
       page = page.replace('</head>', `    ${jsonLdScripts}\n  </head>`)
