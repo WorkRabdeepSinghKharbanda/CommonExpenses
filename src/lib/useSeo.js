@@ -19,12 +19,17 @@ function setMeta(attr, key, content) {
 // renderToString, so this is the only way SSR output gets real meta tags.
 // In the browser (HeadContext is null), the effect below mutates
 // document directly, exactly as before.
-export function useSeo({ title, description, path = '/' }) {
+//
+// publishedTime/modifiedTime are optional (blog posts only) — when given,
+// sets og:type="article" + article:published_time/modified_time.
+export function useSeo({ title, description, path = '/', publishedTime, modifiedTime }) {
   const collector = useHeadCollector()
   if (collector) {
     collector.title = title
     collector.description = description
     collector.canonical = `${BASE_URL}${path}`
+    collector.publishedTime = publishedTime
+    collector.modifiedTime = modifiedTime
   }
 
   useEffect(() => {
@@ -33,8 +38,14 @@ export function useSeo({ title, description, path = '/' }) {
     setMeta('property', 'og:title', title)
     setMeta('property', 'og:description', description)
     setMeta('property', 'og:url', `${BASE_URL}${path}`)
+    setMeta('property', 'og:type', publishedTime ? 'article' : 'website')
     setMeta('name', 'twitter:title', title)
     setMeta('name', 'twitter:description', description)
+
+    if (publishedTime) {
+      setMeta('property', 'article:published_time', publishedTime)
+      setMeta('property', 'article:modified_time', modifiedTime || publishedTime)
+    }
 
     let canonical = document.head.querySelector('link[rel="canonical"]')
     if (!canonical) {
@@ -43,7 +54,7 @@ export function useSeo({ title, description, path = '/' }) {
       document.head.appendChild(canonical)
     }
     canonical.setAttribute('href', `${BASE_URL}${path}`)
-  }, [title, description, path])
+  }, [title, description, path, publishedTime, modifiedTime])
 }
 
 export function useJsonLd(id, data) {

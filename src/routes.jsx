@@ -4,6 +4,12 @@ import BudgetTracker from './pages/BudgetTracker.jsx'
 import RecurringBills from './pages/RecurringBills.jsx'
 import SavingsGoal from './pages/SavingsGoal.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import About from './pages/About.jsx'
+import CategoryHub from './pages/hubs/CategoryHub.jsx'
+import AlternativesIndex from './pages/alternatives/AlternativesIndex.jsx'
+import AlternativePage from './pages/alternatives/AlternativePage.jsx'
+import { CATEGORIES } from './content/categories.js'
+import { ALTERNATIVES } from './content/alternatives.js'
 import SplitBillsGuide from './pages/guides/SplitBillsGuide.jsx'
 import BudgetRuleGuide from './pages/guides/BudgetRuleGuide.jsx'
 import SavingsGuide from './pages/guides/SavingsGuide.jsx'
@@ -42,6 +48,24 @@ export const ROUTES = [
   { path: '/bills', element: RecurringBills, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/savings', element: SavingsGoal, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/privacy', element: PrivacyPolicy, type: 'legal', changefreq: 'yearly', priority: 0.3 },
+  { path: '/about', element: About, type: 'legal', changefreq: 'yearly', priority: 0.3 },
+
+  ...CATEGORIES.map((category) => ({
+    path: category.route,
+    element: () => <CategoryHub category={category} />,
+    type: 'hub',
+    changefreq: 'weekly',
+    priority: 0.7,
+  })),
+
+  { path: '/alternatives', element: AlternativesIndex, type: 'hub', changefreq: 'weekly', priority: 0.6 },
+  ...ALTERNATIVES.map((alt) => ({
+    path: `/alternatives/${alt.slug}`,
+    element: () => <AlternativePage alt={alt} />,
+    type: 'alternative',
+    changefreq: 'monthly',
+    priority: 0.65,
+  })),
 
   { path: '/split-bills-with-roommates', element: SplitBillsGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
   { path: '/50-30-20-budget-rule', element: BudgetRuleGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },

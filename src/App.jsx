@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
-import { ROUTES } from './routes.js'
+import { ROUTES } from './routes.jsx'
 
 export default function App() {
   return (

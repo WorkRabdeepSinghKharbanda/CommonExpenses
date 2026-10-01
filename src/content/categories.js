@@ -1,0 +1,37 @@
+// Category metadata for hub pages (src/pages/hubs/CategoryHub.jsx). Each
+// category's hub lists its guides (guides.js), posts (posts.js), and
+// alternative pages (alternatives.js) filtered by this `key`.
+export const CATEGORIES = [
+  {
+    key: 'split',
+    title: 'Splitting Expenses',
+    route: '/guides/split',
+    toolRoute: '/split',
+    toolLabel: 'Try the free split expense calculator',
+    description: 'Guides, comparisons, and tools for splitting bills, rent, trips, and shared costs fairly among any group.',
+  },
+  {
+    key: 'budget',
+    title: 'Budgeting',
+    route: '/guides/budget',
+    toolRoute: '/budget',
+    toolLabel: 'Try the free budget tracker',
+    description: 'Guides and comparisons for building a budget that works, whether income is steady or irregular.',
+  },
+  {
+    key: 'bills',
+    title: 'Recurring Bills & Subscriptions',
+    route: '/guides/bills',
+    toolRoute: '/bills',
+    toolLabel: 'Try the free recurring bills tracker',
+    description: 'Guides for tracking subscriptions, auditing recurring costs, and negotiating bills down.',
+  },
+  {
+    key: 'savings',
+    title: 'Savings Goals',
+    route: '/guides/savings',
+    toolRoute: '/savings',
+    toolLabel: 'Try the free savings goal calculator',
+    description: 'Guides for setting a savings target and figuring out exactly how much to set aside each month.',
+  },
+]

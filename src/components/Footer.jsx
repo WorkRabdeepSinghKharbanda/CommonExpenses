@@ -13,6 +13,12 @@ export default function Footer() {
           <Link to="/blog" className="underline hover:text-slate-700 dark:hover:text-slate-200">
             Blog
           </Link>
+          <Link to="/alternatives" className="underline hover:text-slate-700 dark:hover:text-slate-200">
+            Alternatives
+          </Link>
+          <Link to="/about" className="underline hover:text-slate-700 dark:hover:text-slate-200">
+            About
+          </Link>
           <Link to="/privacy" className="underline hover:text-slate-700 dark:hover:text-slate-200">
             Privacy Policy
           </Link>

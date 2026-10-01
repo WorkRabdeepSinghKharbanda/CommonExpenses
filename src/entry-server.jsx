@@ -7,7 +7,7 @@ import { CurrencyProvider } from './lib/CurrencyContext.jsx'
 import { ConsentProvider } from './lib/ConsentContext.jsx'
 import { HeadContext } from './lib/HeadContext.jsx'
 
-export { ROUTES } from './routes.js'
+export { ROUTES } from './routes.jsx'
 
 // Called once per route by scripts/prerender.mjs (Node, not the browser).
 // Returns the rendered HTML plus whatever useSeo/useJsonLd collected for

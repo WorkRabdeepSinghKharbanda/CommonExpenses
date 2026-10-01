@@ -67,6 +67,19 @@ async function main() {
       page = replaceAttr(page, /<meta property="og:url" content=".*?" \/>/, `<meta property="og:url" content="${safeUrl}" />`)
     }
 
+    page = replaceAttr(
+      page,
+      /<meta property="og:type" content=".*?" \/>/,
+      `<meta property="og:type" content="${head.publishedTime ? 'article' : 'website'}" />`
+    )
+
+    if (head.publishedTime) {
+      const articleMeta =
+        `<meta property="article:published_time" content="${escapeHtml(head.publishedTime)}" />\n` +
+        `    <meta property="article:modified_time" content="${escapeHtml(head.modifiedTime || head.publishedTime)}" />`
+      page = page.replace('</head>', `    ${articleMeta}\n  </head>`)
+    }
+
     const jsonLdScripts = Object.entries(head.jsonld || {})
       .map(([id, data]) => `<script type="application/ld+json" id="${id}">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`)
       .join('\n    ')

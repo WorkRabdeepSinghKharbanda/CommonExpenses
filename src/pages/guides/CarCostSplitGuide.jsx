@@ -3,6 +3,7 @@ import { useSeo } from '../../lib/useSeo.js'
 import FaqSection from '../../components/FaqSection.jsx'
 import AdSlot from '../../components/AdSlot.jsx'
 import RelatedContent from '../../components/RelatedContent.jsx'
+import Breadcrumbs from '../../components/Breadcrumbs.jsx'
 import { GUIDES } from './guides.js'
 
 const FAQ = [
@@ -30,6 +31,7 @@ export default function CarCostSplitGuide() {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
+      <Breadcrumbs trail={[{ to: "/guides/split", label: "Splitting Expenses" }, { label: "Car cost splitting calculator for shared cars" }]} />
       <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
         Car cost splitting calculator for shared cars
       </h1>
@@ -70,6 +72,12 @@ export default function CarCostSplitGuide() {
         items={GUIDES.map((g) => ({ to: g.route, title: g.title }))}
         currentPath="/car-cost-splitting-calculator"
       />
+
+      <p>
+        <Link to="/guides/split" className="text-sm text-brand-600 hover:underline">
+          ← More splitting expenses guides
+        </Link>
+      </p>
 
       <Link to="/split" className="btn-primary inline-block">
         Split your shared car costs

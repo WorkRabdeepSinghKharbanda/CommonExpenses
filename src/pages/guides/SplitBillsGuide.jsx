@@ -3,6 +3,7 @@ import { useSeo } from '../../lib/useSeo.js'
 import FaqSection from '../../components/FaqSection.jsx'
 import AdSlot from '../../components/AdSlot.jsx'
 import RelatedContent from '../../components/RelatedContent.jsx'
+import Breadcrumbs from '../../components/Breadcrumbs.jsx'
 import { GUIDES } from './guides.js'
 
 const FAQ = [
@@ -30,6 +31,7 @@ export default function SplitBillsGuide() {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
+      <Breadcrumbs trail={[{ to: "/guides/split", label: "Splitting Expenses" }, { label: "How to split bills with roommates, fairly" }]} />
       <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
         How to split bills with roommates, fairly
       </h1>
@@ -59,6 +61,12 @@ export default function SplitBillsGuide() {
         items={GUIDES.map((g) => ({ to: g.route, title: g.title }))}
         currentPath="/split-bills-with-roommates"
       />
+
+      <p>
+        <Link to="/guides/split" className="text-sm text-brand-600 hover:underline">
+          ← More splitting expenses guides
+        </Link>
+      </p>
 
       <Link to="/split" className="btn-primary inline-block">
         Try the free split expense calculator

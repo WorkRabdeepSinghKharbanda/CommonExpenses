@@ -7,6 +7,7 @@ export const POSTS = [
     description:
       'A step-by-step way to find and cut subscriptions you forgot you had, and keep new ones from creeping back in.',
     date: '2026-01-15',
+    category: 'bills',
   },
   {
     slug: 'splitting-expenses-on-a-group-trip',
@@ -14,6 +15,7 @@ export const POSTS = [
     description:
       'A method for tracking shared trip costs as they happen, so settling up at the end takes one look, not a group chat argument.',
     date: '2026-02-03',
+    category: 'split',
   },
   {
     slug: 'how-big-should-your-emergency-fund-be',
@@ -21,6 +23,7 @@ export const POSTS = [
     description:
       'Why "3 to 6 months" is a starting point, not a rule, and how to size an emergency fund to your actual job and expense stability.',
     date: '2026-02-20',
+    category: 'savings',
   },
   {
     slug: 'splitting-rent-different-room-sizes',
@@ -28,6 +31,7 @@ export const POSTS = [
     description:
       "A method for splitting rent proportionally by room size and amenities, instead of splitting a shared apartment's rent evenly when it isn't fair.",
     date: '2026-03-05',
+    category: 'split',
   },
   {
     slug: 'tracking-shared-utility-bills',
@@ -35,6 +39,7 @@ export const POSTS = [
     description:
       'Why utility bills cause more roommate friction than rent, and a simple system for splitting and tracking them as they arrive.',
     date: '2026-03-12',
+    category: 'split',
   },
   {
     slug: 'cash-envelope-vs-app-budgeting',
@@ -42,6 +47,7 @@ export const POSTS = [
     description:
       'A comparison of the cash envelope system and digital budget tracking, and who each one actually fits.',
     date: '2026-03-19',
+    category: 'budget',
   },
   {
     slug: 'zero-based-budgeting-explained',
@@ -49,6 +55,7 @@ export const POSTS = [
     description:
       'How zero-based budgeting works, why it forces better spending decisions than a percentage rule, and how to start this month.',
     date: '2026-03-26',
+    category: 'budget',
   },
   {
     slug: 'how-to-negotiate-lower-bills',
@@ -56,6 +63,7 @@ export const POSTS = [
     description:
       'A step-by-step call script and timing strategy for negotiating recurring bills down, without switching providers.',
     date: '2026-04-02',
+    category: 'bills',
   },
   {
     slug: 'debt-snowball-vs-avalanche',
@@ -63,6 +71,7 @@ export const POSTS = [
     description:
       "The math behind both debt payoff methods, why the mathematically optimal one isn't always the one that works, and how to pick between them.",
     date: '2026-04-09',
+    category: 'budget',
   },
   {
     slug: 'saving-for-a-vacation',
@@ -70,6 +79,7 @@ export const POSTS = [
     description:
       'A month-by-month savings plan for a trip, including how to size your target and avoid the last-minute scramble.',
     date: '2026-04-16',
+    category: 'savings',
   },
   {
     slug: 'splitting-costs-for-a-shared-car',
@@ -77,6 +87,7 @@ export const POSTS = [
     description:
       'How to split gas, insurance, and maintenance for a car used by multiple people, based on usage instead of a flat split.',
     date: '2026-04-23',
+    category: 'split',
   },
   {
     slug: 'budgeting-with-irregular-income',
@@ -84,6 +95,7 @@ export const POSTS = [
     description:
       'A budgeting approach for freelancers and commission-based earners built around a baseline income instead of an average.',
     date: '2026-04-30',
+    category: 'budget',
   },
   {
     slug: 'tracking-expenses-as-a-couple',
@@ -91,5 +103,6 @@ export const POSTS = [
     description:
       'A system for splitting and tracking shared costs as a couple while keeping separate accounts, including how to handle uneven incomes.',
     date: '2026-05-07',
+    category: 'split',
   },
 ]

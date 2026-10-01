@@ -10,6 +10,18 @@
 - [Recurring Bills](https://common-expenses-tracker.vercel.app/bills): Track subscriptions and bills, see upcoming due dates and true monthly total.
 - [Savings Goal](https://common-expenses-tracker.vercel.app/savings): Set a target and timeline, get the required monthly savings amount.
 
+## Category hubs
+- [Splitting Expenses](https://common-expenses-tracker.vercel.app/guides/split)
+- [Budgeting](https://common-expenses-tracker.vercel.app/guides/budget)
+- [Recurring Bills & Subscriptions](https://common-expenses-tracker.vercel.app/guides/bills)
+- [Savings Goals](https://common-expenses-tracker.vercel.app/guides/savings)
+
+## Alternatives (factual comparisons, no disparagement)
+- [Splitwise alternative](https://common-expenses-tracker.vercel.app/alternatives/splitwise-alternative)
+- [Tricount alternative](https://common-expenses-tracker.vercel.app/alternatives/tricount-alternative)
+- [YNAB alternative](https://common-expenses-tracker.vercel.app/alternatives/ynab-alternative)
+- [Mint alternative](https://common-expenses-tracker.vercel.app/alternatives/mint-alternative)
+
 ## Guides
 - [How to split bills with roommates](https://common-expenses-tracker.vercel.app/split-bills-with-roommates)
 - [The 50/30/20 budget rule, explained](https://common-expenses-tracker.vercel.app/50-30-20-budget-rule)
@@ -41,4 +53,5 @@
 - [Tracking expenses as a couple](https://common-expenses-tracker.vercel.app/blog/tracking-expenses-as-a-couple)
 
 ## Other
+- [About / Contact](https://common-expenses-tracker.vercel.app/about)
 - [Privacy Policy](https://common-expenses-tracker.vercel.app/privacy)

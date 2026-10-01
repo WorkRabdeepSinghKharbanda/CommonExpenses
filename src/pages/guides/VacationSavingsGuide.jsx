@@ -3,6 +3,7 @@ import { useSeo } from '../../lib/useSeo.js'
 import FaqSection from '../../components/FaqSection.jsx'
 import AdSlot from '../../components/AdSlot.jsx'
 import RelatedContent from '../../components/RelatedContent.jsx'
+import Breadcrumbs from '../../components/Breadcrumbs.jsx'
 import { GUIDES } from './guides.js'
 
 const FAQ = [
@@ -30,6 +31,7 @@ export default function VacationSavingsGuide() {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
+      <Breadcrumbs trail={[{ to: "/guides/savings", label: "Savings Goals" }, { label: "Vacation savings calculator" }]} />
       <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
         Vacation savings calculator
       </h1>
@@ -68,6 +70,12 @@ export default function VacationSavingsGuide() {
         items={GUIDES.map((g) => ({ to: g.route, title: g.title }))}
         currentPath="/vacation-savings-calculator"
       />
+
+      <p>
+        <Link to="/guides/savings" className="text-sm text-brand-600 hover:underline">
+          ← More savings goals guides
+        </Link>
+      </p>
 
       <Link to="/savings" className="btn-primary inline-block">
         Calculate your vacation savings

@@ -1,6 +1,6 @@
 # Feature Inventory
 
-Source of truth: [src/routes.js](../../../src/routes.js) (the `ROUTES` array — also
+Source of truth: [src/routes.jsx](../../../src/routes.jsx) (the `ROUTES` array — also
 feeds the router, sitemap generation, and build-time prerendering). Regenerate this
 index from there if they ever disagree.
 
@@ -18,3 +18,4 @@ index from there if they ever disagree.
 | 010 | [Blog](010-blog.md) | `/blog`, `/blog/:slug` | `src/pages/blog/` |
 | 011 | [SEO Guides Batch 2](011-seo-guides-batch2.md) | 10 routes, see file | `src/pages/guides/` |
 | 012 | [Blog Batch 2](012-blog-batch2.md) | 10 routes, see file | `src/pages/blog/` |
+| 013 | [Hubs, Alternatives, About](013-hubs-alternatives-about.md) | 10 routes, see file | `src/pages/hubs/`, `src/pages/alternatives/`, `src/pages/About.jsx` |
