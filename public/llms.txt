@@ -51,6 +51,12 @@
 - [Splitting costs for a shared car](https://common-expenses-tracker.vercel.app/blog/splitting-costs-for-a-shared-car)
 - [Budgeting with irregular income](https://common-expenses-tracker.vercel.app/blog/budgeting-with-irregular-income)
 - [Tracking expenses as a couple](https://common-expenses-tracker.vercel.app/blog/tracking-expenses-as-a-couple)
+- [Free trials that convert to paid](https://common-expenses-tracker.vercel.app/blog/free-trials-that-convert-to-paid)
+- [Recurring bill tracker vs. spreadsheet](https://common-expenses-tracker.vercel.app/blog/recurring-bill-tracker-vs-spreadsheet)
+- [Automate your savings](https://common-expenses-tracker.vercel.app/blog/automate-your-savings)
+- [Short-term vs. long-term savings goals](https://common-expenses-tracker.vercel.app/blog/short-term-vs-long-term-savings-goals)
+- [How to budget money for the first time](https://common-expenses-tracker.vercel.app/blog/how-to-budget-money-for-the-first-time)
+- [Splitting bills based on income](https://common-expenses-tracker.vercel.app/blog/splitting-bills-based-on-income)
 
 ## Other
 - [About / Contact](https://common-expenses-tracker.vercel.app/about)

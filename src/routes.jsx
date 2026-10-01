@@ -37,6 +37,12 @@ import SavingForVacation from './pages/blog/SavingForVacation.jsx'
 import SharedCarCosts from './pages/blog/SharedCarCosts.jsx'
 import IrregularIncomeBudgeting from './pages/blog/IrregularIncomeBudgeting.jsx'
 import CouplesExpenseTracking from './pages/blog/CouplesExpenseTracking.jsx'
+import FreeTrialsConvertToPaid from './pages/blog/FreeTrialsConvertToPaid.jsx'
+import RecurringTrackerVsSpreadsheet from './pages/blog/RecurringTrackerVsSpreadsheet.jsx'
+import AutomateYourSavings from './pages/blog/AutomateYourSavings.jsx'
+import ShortVsLongTermSavingsGoals from './pages/blog/ShortVsLongTermSavingsGoals.jsx'
+import BudgetingForTheFirstTime from './pages/blog/BudgetingForTheFirstTime.jsx'
+import SplittingBillsBasedOnIncome from './pages/blog/SplittingBillsBasedOnIncome.jsx'
 
 // Single source of truth for routing, the prerender script, and sitemap
 // generation — add every new route here, nowhere else, so the three can
@@ -95,4 +101,10 @@ export const ROUTES = [
   { path: '/blog/splitting-costs-for-a-shared-car', element: SharedCarCosts, type: 'post', changefreq: 'yearly', priority: 0.6 },
   { path: '/blog/budgeting-with-irregular-income', element: IrregularIncomeBudgeting, type: 'post', changefreq: 'yearly', priority: 0.6 },
   { path: '/blog/tracking-expenses-as-a-couple', element: CouplesExpenseTracking, type: 'post', changefreq: 'yearly', priority: 0.6 },
+  { path: '/blog/free-trials-that-convert-to-paid', element: FreeTrialsConvertToPaid, type: 'post', changefreq: 'yearly', priority: 0.6 },
+  { path: '/blog/recurring-bill-tracker-vs-spreadsheet', element: RecurringTrackerVsSpreadsheet, type: 'post', changefreq: 'yearly', priority: 0.6 },
+  { path: '/blog/automate-your-savings', element: AutomateYourSavings, type: 'post', changefreq: 'yearly', priority: 0.6 },
+  { path: '/blog/short-term-vs-long-term-savings-goals', element: ShortVsLongTermSavingsGoals, type: 'post', changefreq: 'yearly', priority: 0.6 },
+  { path: '/blog/how-to-budget-money-for-the-first-time', element: BudgetingForTheFirstTime, type: 'post', changefreq: 'yearly', priority: 0.6 },
+  { path: '/blog/splitting-bills-based-on-income', element: SplittingBillsBasedOnIncome, type: 'post', changefreq: 'yearly', priority: 0.6 },
 ]

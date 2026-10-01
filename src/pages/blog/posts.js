@@ -105,4 +105,52 @@ export const POSTS = [
     date: '2026-05-07',
     category: 'split',
   },
+  {
+    slug: 'free-trials-that-convert-to-paid',
+    title: 'Free trials that convert to paid: how to stop getting charged without noticing',
+    description:
+      'Why free-trial-to-paid conversions are the most common source of forgotten subscriptions, and a simple habit that catches them before the charge hits.',
+    date: '2026-05-14',
+    category: 'bills',
+  },
+  {
+    slug: 'recurring-bill-tracker-vs-spreadsheet',
+    title: 'Recurring bill tracker vs. spreadsheet: when a spreadsheet is still the better tool',
+    description:
+      'An honest comparison of tracking recurring bills in a spreadsheet versus a dedicated tracker, and which one actually fits your situation.',
+    date: '2026-05-21',
+    category: 'bills',
+  },
+  {
+    slug: 'automate-your-savings',
+    title: "How to automate your savings so you don't have to think about it",
+    description:
+      "A step-by-step approach to automating transfers toward a savings goal, so hitting the target doesn't depend on remembering to do it manually.",
+    date: '2026-05-28',
+    category: 'savings',
+  },
+  {
+    slug: 'short-term-vs-long-term-savings-goals',
+    title: 'Short-term vs. long-term savings goals: should you keep them separate?',
+    description:
+      'Why mixing a vacation fund with a house down payment in one pool causes problems, and how to structure separate goals without overcomplicating things.',
+    date: '2026-06-04',
+    category: 'savings',
+  },
+  {
+    slug: 'how-to-budget-money-for-the-first-time',
+    title: "How to budget money for the first time: a beginner's framework",
+    description:
+      "A simple starting framework for anyone budgeting for the first time — first paycheck, first apartment, or just tired of not knowing where money goes.",
+    date: '2026-06-11',
+    category: 'budget',
+  },
+  {
+    slug: 'splitting-bills-based-on-income',
+    title: 'Splitting bills when someone earns a lot more than everyone else',
+    description:
+      'How to split shared expenses proportionally to income instead of splitting everything evenly, and how to bring it up without it being awkward.',
+    date: '2026-06-18',
+    category: 'split',
+  },
 ]

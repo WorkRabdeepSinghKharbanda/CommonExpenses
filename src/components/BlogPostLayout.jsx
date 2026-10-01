@@ -3,12 +3,16 @@ import { useSeo, useJsonLd } from '../lib/useSeo.js'
 import AdSlot from './AdSlot.jsx'
 import RelatedContent from './RelatedContent.jsx'
 import Breadcrumbs from './Breadcrumbs.jsx'
+import FaqSection from './FaqSection.jsx'
 import { POSTS } from '../pages/blog/posts.js'
 import { CATEGORIES } from '../content/categories.js'
 
 const BASE_URL = 'https://common-expenses-tracker.vercel.app'
 
-export default function BlogPostLayout({ post, children }) {
+// faq/faqId are optional — pass both to render a visible FAQ block with
+// FAQPage JSON-LD (via FaqSection). Posts written before this existed can
+// stay without one; new/expanded posts should always include it.
+export default function BlogPostLayout({ post, children, faq, faqId }) {
   const category = CATEGORIES.find((c) => c.key === post.category)
   const path = `/blog/${post.slug}`
 
@@ -54,6 +58,8 @@ export default function BlogPostLayout({ post, children }) {
         </time>
       </div>
       <div className="space-y-4 text-slate-600 dark:text-slate-300">{children}</div>
+
+      {faq && faqId && <FaqSection id={faqId} items={faq} />}
 
       <RelatedContent
         heading="Related posts"
