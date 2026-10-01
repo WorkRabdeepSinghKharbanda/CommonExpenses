@@ -68,13 +68,6 @@ export default function ZeroBasedBudgeting() {
         falls apart.
       </p>
 
-      <img
-        src="/blog-images/zero-based-budgeting-explained.jpg"
-        alt="A ceramic piggy bank used to represent saving and budgeting money"
-        loading="lazy"
-        className="rounded-lg w-full max-h-96 object-cover"
-      />
-
       <h2 className="font-semibold text-lg text-slate-900 dark:text-white">
         What the "zero" is actually doing
       </h2>
