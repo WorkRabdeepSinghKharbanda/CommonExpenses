@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useHeadCollector } from './HeadContext.jsx'
 
 const BASE_URL = 'https://common-expenses-tracker.vercel.app'
 
@@ -12,9 +13,20 @@ function setMeta(attr, key, content) {
   el.setAttribute('content', content)
 }
 
-// SPA has no SSR, so index.html's static tags only cover the homepage.
-// This sets per-route title/description/canonical/OG on mount for real per-page SEO.
+// Dual-mode: during server rendering (HeadContext present), write
+// synchronously into the collector so the prerender script can inject real
+// per-route <head> tags into the static HTML — effects never run during
+// renderToString, so this is the only way SSR output gets real meta tags.
+// In the browser (HeadContext is null), the effect below mutates
+// document directly, exactly as before.
 export function useSeo({ title, description, path = '/' }) {
+  const collector = useHeadCollector()
+  if (collector) {
+    collector.title = title
+    collector.description = description
+    collector.canonical = `${BASE_URL}${path}`
+  }
+
   useEffect(() => {
     document.title = title
     setMeta('name', 'description', description)
@@ -35,6 +47,12 @@ export function useSeo({ title, description, path = '/' }) {
 }
 
 export function useJsonLd(id, data) {
+  const collector = useHeadCollector()
+  if (collector) {
+    collector.jsonld = collector.jsonld || {}
+    collector.jsonld[id] = data
+  }
+
   useEffect(() => {
     let el = document.getElementById(id)
     if (!el) {
@@ -45,5 +63,6 @@ export function useJsonLd(id, data) {
     }
     el.textContent = JSON.stringify(data)
     return () => el?.remove()
-  }, [id, data])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, JSON.stringify(data)])
 }

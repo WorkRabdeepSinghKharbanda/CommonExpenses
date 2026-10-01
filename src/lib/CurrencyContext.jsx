@@ -4,7 +4,13 @@ import { CURRENCIES, formatAmount } from './currency.js'
 const CurrencyContext = createContext(null)
 
 export function CurrencyProvider({ children }) {
-  const [currency, setCurrency] = useState(() => localStorage.getItem('currency') || 'USD')
+  const [currency, setCurrency] = useState(() => {
+    try {
+      return localStorage.getItem('currency') || 'USD'
+    } catch {
+      return 'USD'
+    }
+  })
 
   useEffect(() => {
     localStorage.setItem('currency', currency)
