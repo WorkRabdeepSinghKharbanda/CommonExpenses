@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'splitting-bills-based-on-income',
-  title: 'Splitting bills when someone earns a lot more than everyone else',
-  description:
-    'How to split shared expenses proportionally to income instead of splitting everything evenly, and how to bring it up without it being awkward.',
-  date: '2026-06-18',
-  category: 'split',
-}
+const post = POSTS.find((p) => p.slug === 'splitting-bills-based-on-income')
 
 const FAQ = [
   {

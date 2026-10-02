@@ -14,7 +14,7 @@ export default function CategoryHub({ category }) {
   const alternatives = ALTERNATIVES.filter((a) => a.category === category.key)
 
   useSeo({
-    title: `${category.title} — Guides, Comparisons & Calculator | Common Expenses Tracker`,
+    title: `${category.title} | Common Expenses Tracker`,
     description: category.description,
     path: category.route,
   })
@@ -22,7 +22,11 @@ export default function CategoryHub({ category }) {
   useJsonLd(`itemlist-${category.key}`, {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    itemListElement: [...guides, ...posts.map((p) => ({ route: `/blog/${p.slug}`, title: p.title }))].map(
+    itemListElement: [
+      ...(category.pillarRoute ? [{ route: category.pillarRoute, title: category.pillarTitle }] : []),
+      ...guides,
+      ...posts.map((p) => ({ route: `/blog/${p.slug}`, title: p.title })),
+    ].map(
       (item, i) => ({
         '@type': 'ListItem',
         position: i + 1,
@@ -42,6 +46,16 @@ export default function CategoryHub({ category }) {
           {category.toolLabel}
         </Link>
       </div>
+
+      {category.pillarRoute && (
+        <Link
+          to={category.pillarRoute}
+          className="block rounded-lg border border-brand-200 dark:border-brand-800 bg-brand-50 dark:bg-brand-950/30 p-4 hover:border-brand-400"
+        >
+          <span className="text-xs font-semibold uppercase text-brand-600">Start here</span>
+          <p className="font-semibold text-slate-900 dark:text-white">{category.pillarTitle}</p>
+        </Link>
+      )}
 
       {guides.length > 0 && (
         <section className="space-y-3">

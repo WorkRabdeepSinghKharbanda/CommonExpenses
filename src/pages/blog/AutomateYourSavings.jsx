@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'automate-your-savings',
-  title: "How to automate your savings so you don't have to think about it",
-  description:
-    "A step-by-step approach to automating transfers toward a savings goal, so hitting the target doesn't depend on remembering to do it manually.",
-  date: '2026-05-28',
-  category: 'savings',
-}
+const post = POSTS.find((p) => p.slug === 'automate-your-savings')
 
 const FAQ = [
   {

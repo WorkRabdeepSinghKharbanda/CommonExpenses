@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'recurring-bill-tracker-vs-spreadsheet',
-  title: 'Recurring bill tracker vs. spreadsheet: when a spreadsheet is still the better tool',
-  description:
-    'An honest comparison of tracking recurring bills in a spreadsheet versus a dedicated tracker, and which one actually fits your situation.',
-  date: '2026-05-21',
-  category: 'bills',
-}
+const post = POSTS.find((p) => p.slug === 'recurring-bill-tracker-vs-spreadsheet')
 
 const FAQ = [
   {

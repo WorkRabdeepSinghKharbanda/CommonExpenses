@@ -23,6 +23,8 @@ import IrregularIncomeGuide from './pages/guides/IrregularIncomeGuide.jsx'
 import CouplesTrackerGuide from './pages/guides/CouplesTrackerGuide.jsx'
 import GroceryExpenseGuide from './pages/guides/GroceryExpenseGuide.jsx'
 import GroupGiftGuide from './pages/guides/GroupGiftGuide.jsx'
+import SplitExpensesPillar from './pages/guides/SplitExpensesPillar.jsx'
+import BudgetPillar from './pages/guides/BudgetPillar.jsx'
 import BlogIndex from './pages/blog/BlogIndex.jsx'
 import AuditRecurringBills from './pages/blog/AuditRecurringBills.jsx'
 import GroupTripExpenses from './pages/blog/GroupTripExpenses.jsx'
@@ -73,6 +75,8 @@ export const ROUTES = [
     priority: 0.65,
   })),
 
+  { path: '/how-to-split-expenses-fairly', element: SplitExpensesPillar, type: 'pillar', changefreq: 'weekly', priority: 0.8 },
+  { path: '/how-to-build-a-budget-that-works', element: BudgetPillar, type: 'pillar', changefreq: 'weekly', priority: 0.8 },
   { path: '/split-bills-with-roommates', element: SplitBillsGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
   { path: '/50-30-20-budget-rule', element: BudgetRuleGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
   { path: '/how-much-to-save-each-month', element: SavingsGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },

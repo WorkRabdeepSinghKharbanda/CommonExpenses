@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'short-term-vs-long-term-savings-goals',
-  title: 'Short-term vs. long-term savings goals: should you keep them separate?',
-  description:
-    'Why mixing a vacation fund with a house down payment in one pool causes problems, and how to structure separate goals without overcomplicating things.',
-  date: '2026-06-04',
-  category: 'savings',
-}
+const post = POSTS.find((p) => p.slug === 'short-term-vs-long-term-savings-goals')
 
 const FAQ = [
   {

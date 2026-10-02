@@ -61,6 +61,18 @@ async function main() {
       )
     }
 
+    if (head.image) {
+      const safeImage = escapeHtml(head.image)
+      const ext = path.extname(head.image).toLowerCase()
+      const imageType = ext === '.png' ? 'image/png' : ext === '.jpeg' ? 'image/jpeg' : ext === '.jpg' ? 'image/jpeg' : 'image/png'
+      page = replaceAttr(page, /<meta property="og:image" content=".*?" \/>/, `<meta property="og:image" content="${safeImage}" />`)
+      page = replaceAttr(page, /<meta property="og:image:type" content=".*?" \/>/, `<meta property="og:image:type" content="${imageType}" />`)
+      page = replaceAttr(page, /<meta name="twitter:image" content=".*?" \/>/, `<meta name="twitter:image" content="${safeImage}" />`)
+      if (!/<meta name="twitter:image"/.test(page)) {
+        page = page.replace('</head>', `    <meta name="twitter:image" content="${safeImage}" />\n  </head>`)
+      }
+    }
+
     if (head.canonical) {
       const safeUrl = escapeHtml(head.canonical)
       page = replaceAttr(page, /<link rel="canonical" href=".*?" \/>/, `<link rel="canonical" href="${safeUrl}" />`)

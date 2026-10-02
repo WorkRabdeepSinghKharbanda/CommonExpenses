@@ -15,12 +15,14 @@ const BASE_URL = 'https://common-expenses-tracker.vercel.app'
 export default function BlogPostLayout({ post, children, faq, faqId }) {
   const category = CATEGORIES.find((c) => c.key === post.category)
   const path = `/blog/${post.slug}`
+  const imageUrl = post.image ? `${BASE_URL}/blog-images/${post.image}` : `${BASE_URL}/og-image.png`
 
   useSeo({
-    title: `${post.title} | Common Expenses Tracker Blog`,
+    title: `${post.seoTitle || post.title} | Common Expenses Tracker`,
     description: post.description,
     path,
     publishedTime: `${post.date}T00:00:00.000Z`,
+    image: post.image ? `/blog-images/${post.image}` : undefined,
   })
 
   useJsonLd(`blogposting-${post.slug}`, {
@@ -32,7 +34,7 @@ export default function BlogPostLayout({ post, children, faq, faqId }) {
     dateModified: post.date,
     url: `${BASE_URL}${path}`,
     mainEntityOfPage: `${BASE_URL}${path}`,
-    image: `${BASE_URL}/og-image.png`,
+    image: imageUrl,
     keywords: post.category,
     author: { '@type': 'Organization', name: 'Common Expenses Tracker' },
     publisher: {

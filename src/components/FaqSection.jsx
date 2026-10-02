@@ -3,15 +3,22 @@ import { useJsonLd } from '../lib/useSeo.js'
 // Renders visible Q&A plus FAQPage JSON-LD, so both classic search snippets
 // and AI answer engines (which parse structured data, not rendered layout) get it.
 export default function FaqSection({ id, items }) {
-  useJsonLd(id, {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: items.map((it) => ({
-      '@type': 'Question',
-      name: it.q,
-      acceptedAnswer: { '@type': 'Answer', text: it.a },
-    })),
-  })
+  const hasItems = items && items.length > 0
+
+  useJsonLd(
+    id,
+    hasItems && {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: items.map((it) => ({
+        '@type': 'Question',
+        name: it.q,
+        acceptedAnswer: { '@type': 'Answer', text: it.a },
+      })),
+    }
+  )
+
+  if (!hasItems) return null
 
   return (
     <section className="space-y-4">

@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'how-to-budget-money-for-the-first-time',
-  title: "How to budget money for the first time: a beginner's framework",
-  description:
-    "A simple starting framework for anyone budgeting for the first time — first paycheck, first apartment, or just tired of not knowing where money goes.",
-  date: '2026-06-11',
-  category: 'budget',
-}
+const post = POSTS.find((p) => p.slug === 'how-to-budget-money-for-the-first-time')
 
 const FAQ = [
   {

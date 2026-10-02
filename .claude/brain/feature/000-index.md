@@ -21,3 +21,4 @@ index from there if they ever disagree.
 | 013 | [Hubs, Alternatives, About](013-hubs-alternatives-about.md) | 10 routes, see file | `src/pages/hubs/`, `src/pages/alternatives/`, `src/pages/About.jsx` |
 | 014 | [Blog Content Expansion](014-blog-content-expansion.md) | 6 new routes + 13 expanded, see file | `src/pages/blog/` |
 | 015 | [Blog Long-Form Expansion](015-blog-long-form-expansion.md) | all `/blog/:slug` routes | `src/pages/blog/`, `public/blog-images/` |
+| 016 | [SEO Audit Fixes](016-seo-audit-fixes.md) | 2 new pillar routes, see file | `src/pages/guides/SplitExpensesPillar.jsx`, `BudgetPillar.jsx` |

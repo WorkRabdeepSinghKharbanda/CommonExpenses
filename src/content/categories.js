@@ -9,6 +9,8 @@ export const CATEGORIES = [
     toolRoute: '/split',
     toolLabel: 'Try the free split expense calculator',
     description: 'Guides, comparisons, and tools for splitting bills, rent, trips, and shared costs fairly among any group.',
+    pillarRoute: '/how-to-split-expenses-fairly',
+    pillarTitle: 'How to split shared expenses fairly (start here)',
   },
   {
     key: 'budget',
@@ -17,6 +19,8 @@ export const CATEGORIES = [
     toolRoute: '/budget',
     toolLabel: 'Try the free budget tracker',
     description: 'Guides and comparisons for building a budget that works, whether income is steady or irregular.',
+    pillarRoute: '/how-to-build-a-budget-that-works',
+    pillarTitle: 'How to build a budget that actually works (start here)',
   },
   {
     key: 'bills',

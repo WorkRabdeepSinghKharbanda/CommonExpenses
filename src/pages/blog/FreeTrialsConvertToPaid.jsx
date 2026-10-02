@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
 import BlogPostLayout from '../../components/BlogPostLayout.jsx'
+import { POSTS } from './posts.js'
 
-const post = {
-  slug: 'free-trials-that-convert-to-paid',
-  title: 'Free trials that convert to paid: how to stop getting charged without noticing',
-  description:
-    'Why free-trial-to-paid conversions are the most common source of forgotten subscriptions, and a simple habit that catches them before the charge hits.',
-  date: '2026-05-14',
-  category: 'bills',
-}
+const post = POSTS.find((p) => p.slug === 'free-trials-that-convert-to-paid')
 
 const FAQ = [
   {
