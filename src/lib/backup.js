@@ -1,7 +1,16 @@
 // Every localStorage key the 4 calculators + currency preference use — the
 // single source of truth for what a backup includes. Add a key here if a
 // tool ever gets a new piece of persisted state.
-const KEYS = ['split.people', 'split.expenses', 'budget.entries', 'bills.list', 'savings.form', 'currency']
+const KEYS = [
+  'split.people',
+  'split.expenses',
+  'budget.entries',
+  'bills.list',
+  'savings.form',
+  'debtpayoff.debts',
+  'debtpayoff.settings',
+  'currency',
+]
 
 export function exportAllData() {
   const data = {}

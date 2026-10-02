@@ -6,6 +6,7 @@ import { useSeo } from '../lib/useSeo.js'
 import { computeSettlements } from '../lib/splitMath.js'
 import { exportAllData, importAllData } from '../lib/backup.js'
 import { FREQUENCIES, nextDueDate } from '../lib/bills.js'
+import { simulatePayoff } from '../lib/debtPayoff.js'
 
 export default function Dashboard() {
   useSeo({
@@ -20,6 +21,8 @@ export default function Dashboard() {
   const [entries] = useLocalState('budget.entries', [])
   const [bills] = useLocalState('bills.list', [])
   const [savingsForm] = useLocalState('savings.form', { target: '10000', current: '0', months: '12', annualRate: '0' })
+  const [debts] = useLocalState('debtpayoff.debts', [])
+  const [debtSettings] = useLocalState('debtpayoff.settings', { extraMonthly: '100', strategy: 'avalanche' })
 
   const [importError, setImportError] = useState('')
   const fileInputRef = useRef(null)
@@ -45,7 +48,10 @@ export default function Dashboard() {
   const { net, settlements } = computeSettlements(people, expenses)
   const totalUnsettled = Object.values(net).filter((v) => v > 0.01).reduce((s, v) => s + v, 0)
 
-  const hasAnyData = people.length > 0 || entries.length > 0 || bills.length > 0 || current > 0
+  const debtResult = debts.length > 0 ? simulatePayoff(debts, parseFloat(debtSettings.extraMonthly) || 0, debtSettings.strategy) : null
+  const totalDebt = debts.reduce((s, d) => s + d.balance, 0)
+
+  const hasAnyData = people.length > 0 || entries.length > 0 || bills.length > 0 || current > 0 || debts.length > 0
 
   const handleImport = async (e) => {
     const file = e.target.files?.[0]
@@ -106,6 +112,20 @@ export default function Dashboard() {
           <div className="text-xs text-slate-500 dark:text-slate-400">
             {people.length} {people.length === 1 ? 'person' : 'people'}
             {settlements.length > 0 && ` · ${settlements.length} payment${settlements.length === 1 ? '' : 's'} to settle up`}
+          </div>
+        </Link>
+
+        <Link to="/debt-payoff" className="card space-y-1 hover:border-brand-400 border border-transparent">
+          <div className="text-xs font-semibold uppercase text-slate-400">Debt remaining</div>
+          <div className="text-2xl font-bold text-slate-900 dark:text-white">
+            {totalDebt > 0.01 ? format(totalDebt) : '—'}
+          </div>
+          <div className="text-xs text-slate-500 dark:text-slate-400">
+            {debtResult && !debtResult.neverPaidOff
+              ? `Debt-free in ${debtResult.months} months`
+              : debts.length > 0
+                ? 'Increase payments to pay it off'
+                : 'No debts tracked'}
           </div>
         </Link>
       </div>

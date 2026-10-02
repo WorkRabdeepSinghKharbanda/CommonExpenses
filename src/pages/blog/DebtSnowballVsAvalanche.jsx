@@ -424,8 +424,8 @@ export default function DebtSnowballVsAvalanche() {
         perfectly rational choice, not a concession to emotion over math.
       </p>
 
-      <Link to="/savings" className="btn-primary inline-block">
-        Plan your payoff timeline
+      <Link to="/debt-payoff" className="btn-primary inline-block">
+        Try the free debt payoff calculator
       </Link>
     </BlogPostLayout>
   )

@@ -1,5 +1,6 @@
 import Landing from './pages/Landing.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import DebtPayoff from './pages/DebtPayoff.jsx'
 import SplitExpense from './pages/SplitExpense.jsx'
 import BudgetTracker from './pages/BudgetTracker.jsx'
 import RecurringBills from './pages/RecurringBills.jsx'
@@ -57,6 +58,7 @@ export const ROUTES = [
   { path: '/bills', element: RecurringBills, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/savings', element: SavingsGoal, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/dashboard', element: Dashboard, type: 'tool', changefreq: 'monthly', priority: 0.7 },
+  { path: '/debt-payoff', element: DebtPayoff, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/privacy', element: PrivacyPolicy, type: 'legal', changefreq: 'yearly', priority: 0.3 },
   { path: '/about', element: About, type: 'legal', changefreq: 'yearly', priority: 0.3 },
 

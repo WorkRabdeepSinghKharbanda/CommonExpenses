@@ -9,6 +9,7 @@ const links = [
   { to: '/budget', label: 'Budget' },
   { to: '/bills', label: 'Recurring Bills' },
   { to: '/savings', label: 'Savings Goal' },
+  { to: '/debt-payoff', label: 'Debt Payoff' },
 ]
 
 const linkClass = ({ isActive }) =>

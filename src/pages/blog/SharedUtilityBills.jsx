@@ -466,8 +466,8 @@ export default function SharedUtilityBills() {
         average, turning an unpredictable spike into a predictable, budgetable number.
       </p>
 
-      <Link to="/budget" className="btn-primary inline-block">
-        Track your utility spending
+      <Link to="/split" className="btn-primary inline-block">
+        Split your shared utility bills
       </Link>
     </BlogPostLayout>
   )

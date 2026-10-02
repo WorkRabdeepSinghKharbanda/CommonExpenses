@@ -79,8 +79,8 @@ export default function DebtPayoffGuide() {
         </Link>
       </p>
 
-      <Link to="/budget" className="btn-primary inline-block">
-        Track your debt payoff
+      <Link to="/debt-payoff" className="btn-primary inline-block">
+        Try the free debt payoff calculator
       </Link>
     </div>
   )

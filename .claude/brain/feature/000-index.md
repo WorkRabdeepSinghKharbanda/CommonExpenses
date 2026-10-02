@@ -23,3 +23,4 @@ index from there if they ever disagree.
 | 015 | [Blog Long-Form Expansion](015-blog-long-form-expansion.md) | all `/blog/:slug` routes | `src/pages/blog/`, `public/blog-images/` |
 | 016 | [SEO Audit Fixes](016-seo-audit-fixes.md) | 2 new pillar routes, see file | `src/pages/guides/SplitExpensesPillar.jsx`, `BudgetPillar.jsx` |
 | 017 | [Dashboard & Backup](017-dashboard-backup.md) | `/dashboard` | `src/pages/Dashboard.jsx`, `src/lib/backup.js` |
+| 018 | [Debt Payoff Calculator](018-debt-payoff-calculator.md) | `/debt-payoff` | `src/pages/DebtPayoff.jsx`, `src/lib/debtPayoff.js` |

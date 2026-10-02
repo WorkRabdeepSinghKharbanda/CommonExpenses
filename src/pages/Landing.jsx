@@ -40,6 +40,12 @@ const features = [
     title: 'Savings Goal',
     description: 'Set a target and find out how much to save each month.',
   },
+  {
+    to: '/debt-payoff',
+    icon: '📉',
+    title: 'Debt Payoff',
+    description: 'Compare snowball vs. avalanche and see exactly when you\'ll be debt-free.',
+  },
 ]
 
 export default function Landing() {
