@@ -5,20 +5,7 @@ import { downloadCSV } from '../lib/csv.js'
 import { nonNegative, inRange } from '../lib/forms.js'
 import { useSeo } from '../lib/useSeo.js'
 import PageToolbar from '../components/PageToolbar.jsx'
-
-const FREQUENCIES = { monthly: 1, yearly: 1 / 12, weekly: 52 / 12 }
-
-function nextDueDate(dueDay, frequency) {
-  const now = new Date()
-  const candidate = new Date(now.getFullYear(), now.getMonth(), dueDay)
-  if (frequency === 'monthly' && candidate < now) candidate.setMonth(candidate.getMonth() + 1)
-  if (frequency === 'yearly' && candidate < now) candidate.setFullYear(candidate.getFullYear() + 1)
-  if (frequency === 'weekly') {
-    const diff = (dueDay - now.getDay() + 7) % 7
-    candidate.setDate(now.getDate() + (diff === 0 ? 7 : diff))
-  }
-  return candidate
-}
+import { FREQUENCIES, nextDueDate } from '../lib/bills.js'
 
 export default function RecurringBills() {
   useSeo({

@@ -1,20 +1,11 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext } from 'react'
 import { CURRENCIES, formatAmount } from './currency.js'
+import { useLocalState } from './useLocalState.js'
 
 const CurrencyContext = createContext(null)
 
 export function CurrencyProvider({ children }) {
-  const [currency, setCurrency] = useState(() => {
-    try {
-      return localStorage.getItem('currency') || 'USD'
-    } catch {
-      return 'USD'
-    }
-  })
-
-  useEffect(() => {
-    localStorage.setItem('currency', currency)
-  }, [currency])
+  const [currency, setCurrency] = useLocalState('currency', 'USD')
 
   const format = (amount) => formatAmount(amount, currency)
 

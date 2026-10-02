@@ -4,6 +4,7 @@ import { useTheme } from '../lib/ThemeContext.jsx'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 
 const links = [
+  { to: '/dashboard', label: 'Dashboard' },
   { to: '/split', label: 'Split Expense' },
   { to: '/budget', label: 'Budget' },
   { to: '/bills', label: 'Recurring Bills' },

@@ -11,6 +11,12 @@ const guides = [
 
 const features = [
   {
+    to: '/dashboard',
+    icon: '🧮',
+    title: 'Dashboard',
+    description: 'See your budget balance, bills, savings, and split balances in one place.',
+  },
+  {
     to: '/split',
     icon: '÷',
     title: 'Split Expense',

@@ -22,3 +22,4 @@ index from there if they ever disagree.
 | 014 | [Blog Content Expansion](014-blog-content-expansion.md) | 6 new routes + 13 expanded, see file | `src/pages/blog/` |
 | 015 | [Blog Long-Form Expansion](015-blog-long-form-expansion.md) | all `/blog/:slug` routes | `src/pages/blog/`, `public/blog-images/` |
 | 016 | [SEO Audit Fixes](016-seo-audit-fixes.md) | 2 new pillar routes, see file | `src/pages/guides/SplitExpensesPillar.jsx`, `BudgetPillar.jsx` |
+| 017 | [Dashboard & Backup](017-dashboard-backup.md) | `/dashboard` | `src/pages/Dashboard.jsx`, `src/lib/backup.js` |
