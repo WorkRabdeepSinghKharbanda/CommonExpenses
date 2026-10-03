@@ -194,4 +194,13 @@ export const POSTS = [
     category: 'split',
     image: 'splitting-bills-based-on-income.jpg',
   },
+  {
+    slug: 'reducing-balance-vs-flat-rate-interest',
+    title: "Reducing balance vs. flat rate interest: why your loan's real cost isn't what it looks like",
+    seoTitle: 'Reducing Balance vs. Flat Rate',
+    description:
+      'Two loans with similar quoted rates can cost very different amounts depending on whether interest is calculated on the original principal or the remaining balance.',
+    date: '2026-06-25',
+    category: 'loans',
+  },
 ]

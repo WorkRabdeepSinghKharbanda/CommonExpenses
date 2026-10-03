@@ -24,3 +24,4 @@ index from there if they ever disagree.
 | 016 | [SEO Audit Fixes](016-seo-audit-fixes.md) | 2 new pillar routes, see file | `src/pages/guides/SplitExpensesPillar.jsx`, `BudgetPillar.jsx` |
 | 017 | [Dashboard & Backup](017-dashboard-backup.md) | `/dashboard` | `src/pages/Dashboard.jsx`, `src/lib/backup.js` |
 | 018 | [Debt Payoff Calculator](018-debt-payoff-calculator.md) | `/debt-payoff` | `src/pages/DebtPayoff.jsx`, `src/lib/debtPayoff.js` |
+| 019 | [Loan / EMI Calculator](019-loan-emi-calculator.md) | `/loan-calculator` + 3 more, see file | `src/pages/LoanCalculator.jsx`, `src/lib/loanMath.js` |

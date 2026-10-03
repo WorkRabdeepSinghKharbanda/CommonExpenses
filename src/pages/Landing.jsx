@@ -46,13 +46,19 @@ const features = [
     title: 'Debt Payoff',
     description: 'Compare snowball vs. avalanche and see exactly when you\'ll be debt-free.',
   },
+  {
+    to: '/loan-calculator',
+    icon: '🏦',
+    title: 'Loan / EMI',
+    description: 'Calculate your real monthly payment and full amortization schedule.',
+  },
 ]
 
 export default function Landing() {
   useSeo({
-    title: 'Common Expenses Tracker — Split Bills, Budget, Bills & Savings Calculators',
+    title: 'Common Expenses Tracker — Split Bills, Budget, Debt & Loan Calculators',
     description:
-      'Free calculators to split bills, track budgets, manage recurring bills, and plan savings goals. No sign-up, all data stays in your browser.',
+      'Free calculators to split bills, track budgets, manage recurring bills, plan savings goals, pay off debt, and calculate loan EMI. No sign-up, all data stays in your browser.',
     path: '/',
   })
   return (
@@ -65,8 +71,8 @@ export default function Landing() {
           Track common expenses, without the spreadsheet.
         </h1>
         <p className="text-lg text-slate-600 dark:text-slate-400">
-          Four focused calculators for splitting bills, budgeting, recurring
-          payments, and savings goals. Everything runs in your browser.
+          Focused calculators for splitting bills, budgeting, recurring
+          payments, savings goals, debt payoff, and loans. Everything runs in your browser.
         </p>
       </section>
 

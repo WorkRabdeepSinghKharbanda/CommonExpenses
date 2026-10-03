@@ -12,7 +12,7 @@ export default function Dashboard() {
   useSeo({
     title: 'Dashboard | Common Expenses Tracker',
     description:
-      'One overview of your budget balance, upcoming bills, savings progress, and split-expense balances, pulled from all four calculators.',
+      'One overview of your budget balance, upcoming bills, savings progress, debt payoff, and split-expense balances, pulled from every calculator.',
     path: '/dashboard',
   })
   const { format } = useCurrency()
@@ -73,7 +73,7 @@ export default function Dashboard() {
 
       {!hasAnyData && (
         <div className="card text-sm text-slate-500 dark:text-slate-400">
-          Nothing tracked yet — add data in any of the four calculators and it'll show up here.
+          Nothing tracked yet — add data in any calculator and it'll show up here.
         </div>
       )}
 

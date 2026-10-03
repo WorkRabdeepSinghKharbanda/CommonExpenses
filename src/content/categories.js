@@ -31,6 +31,14 @@ export const CATEGORIES = [
     description: 'Guides for tracking subscriptions, auditing recurring costs, and negotiating bills down.',
   },
   {
+    key: 'loans',
+    title: 'Loans & EMI',
+    route: '/guides/loans',
+    toolRoute: '/loan-calculator',
+    toolLabel: 'Try the free loan / EMI calculator',
+    description: 'How loan interest actually works, and a calculator for your real monthly payment and full amortization schedule.',
+  },
+  {
     key: 'savings',
     title: 'Savings Goals',
     route: '/guides/savings',

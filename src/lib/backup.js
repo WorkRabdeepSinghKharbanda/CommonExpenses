@@ -9,6 +9,7 @@ const KEYS = [
   'savings.form',
   'debtpayoff.debts',
   'debtpayoff.settings',
+  'loan.form',
   'currency',
 ]
 

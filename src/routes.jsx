@@ -1,6 +1,7 @@
 import Landing from './pages/Landing.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import DebtPayoff from './pages/DebtPayoff.jsx'
+import LoanCalculator from './pages/LoanCalculator.jsx'
 import SplitExpense from './pages/SplitExpense.jsx'
 import BudgetTracker from './pages/BudgetTracker.jsx'
 import RecurringBills from './pages/RecurringBills.jsx'
@@ -25,6 +26,7 @@ import IrregularIncomeGuide from './pages/guides/IrregularIncomeGuide.jsx'
 import CouplesTrackerGuide from './pages/guides/CouplesTrackerGuide.jsx'
 import GroceryExpenseGuide from './pages/guides/GroceryExpenseGuide.jsx'
 import GroupGiftGuide from './pages/guides/GroupGiftGuide.jsx'
+import EMIGuide from './pages/guides/EMIGuide.jsx'
 import SplitExpensesPillar from './pages/guides/SplitExpensesPillar.jsx'
 import BudgetPillar from './pages/guides/BudgetPillar.jsx'
 import BlogIndex from './pages/blog/BlogIndex.jsx'
@@ -47,6 +49,7 @@ import AutomateYourSavings from './pages/blog/AutomateYourSavings.jsx'
 import ShortVsLongTermSavingsGoals from './pages/blog/ShortVsLongTermSavingsGoals.jsx'
 import BudgetingForTheFirstTime from './pages/blog/BudgetingForTheFirstTime.jsx'
 import SplittingBillsBasedOnIncome from './pages/blog/SplittingBillsBasedOnIncome.jsx'
+import ReducingBalanceVsFlatRate from './pages/blog/ReducingBalanceVsFlatRate.jsx'
 
 // Single source of truth for routing, the prerender script, and sitemap
 // generation — add every new route here, nowhere else, so the three can
@@ -59,6 +62,7 @@ export const ROUTES = [
   { path: '/savings', element: SavingsGoal, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/dashboard', element: Dashboard, type: 'tool', changefreq: 'monthly', priority: 0.7 },
   { path: '/debt-payoff', element: DebtPayoff, type: 'tool', changefreq: 'monthly', priority: 0.8 },
+  { path: '/loan-calculator', element: LoanCalculator, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/privacy', element: PrivacyPolicy, type: 'legal', changefreq: 'yearly', priority: 0.3 },
   { path: '/about', element: About, type: 'legal', changefreq: 'yearly', priority: 0.3 },
 
@@ -94,6 +98,7 @@ export const ROUTES = [
   { path: '/couples-expense-tracker', element: CouplesTrackerGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
   { path: '/grocery-expense-splitter', element: GroceryExpenseGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
   { path: '/group-gift-cost-splitter', element: GroupGiftGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
+  { path: '/how-emi-is-calculated', element: EMIGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
 
   { path: '/blog', element: BlogIndex, type: 'hub', changefreq: 'weekly', priority: 0.7 },
   { path: '/blog/audit-your-recurring-bills', element: AuditRecurringBills, type: 'post', changefreq: 'yearly', priority: 0.6 },
@@ -115,4 +120,5 @@ export const ROUTES = [
   { path: '/blog/short-term-vs-long-term-savings-goals', element: ShortVsLongTermSavingsGoals, type: 'post', changefreq: 'yearly', priority: 0.6 },
   { path: '/blog/how-to-budget-money-for-the-first-time', element: BudgetingForTheFirstTime, type: 'post', changefreq: 'yearly', priority: 0.6 },
   { path: '/blog/splitting-bills-based-on-income', element: SplittingBillsBasedOnIncome, type: 'post', changefreq: 'yearly', priority: 0.6 },
+  { path: '/blog/reducing-balance-vs-flat-rate-interest', element: ReducingBalanceVsFlatRate, type: 'post', changefreq: 'yearly', priority: 0.6 },
 ]
