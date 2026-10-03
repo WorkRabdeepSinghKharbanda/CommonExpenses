@@ -30,3 +30,4 @@ index from there if they ever disagree.
 | 022 | [Navbar Tools Dropdown](022-navbar-tools-dropdown.md) | layout only | `src/components/Navbar.jsx` |
 | 023 | [PWA / Offline](023-pwa-offline.md) | app-shell only | `public/sw.js`, `public/manifest.webmanifest` |
 | 024 | [Shareable Split Link](024-shareable-split-link.md) | `/split?s=...` | `src/pages/SplitExpense.jsx`, `src/lib/shareLink.js` |
+| 025 | [Budget Monthly Trend](025-budget-monthly-trend.md) | `/budget` (extended) | `src/pages/BudgetTracker.jsx`, `src/lib/budgetTrend.js` |

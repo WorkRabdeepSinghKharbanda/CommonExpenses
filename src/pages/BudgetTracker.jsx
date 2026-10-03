@@ -5,6 +5,7 @@ import { downloadCSV } from '../lib/csv.js'
 import { nonNegative } from '../lib/forms.js'
 import { useSeo } from '../lib/useSeo.js'
 import PageToolbar from '../components/PageToolbar.jsx'
+import { groupByMonth } from '../lib/budgetTrend.js'
 
 const CATEGORIES = ['Food', 'Rent', 'Transport', 'Utilities', 'Shopping', 'Health', 'Entertainment', 'Other']
 
@@ -17,12 +18,13 @@ export default function BudgetTracker() {
   })
   const { format } = useCurrency()
   const [entries, setEntries] = useLocalState('budget.entries', [])
-  const [form, setForm] = useState({ description: '', amount: '', type: 'expense', category: 'Food' })
+  const today = () => new Date().toISOString().slice(0, 10)
+  const [form, setForm] = useState({ description: '', amount: '', type: 'expense', category: 'Food', date: today() })
   const [search, setSearch] = useState('')
   const [editingId, setEditingId] = useState(null)
 
   const resetForm = () => {
-    setForm({ description: '', amount: '', type: 'expense', category: 'Food' })
+    setForm({ description: '', amount: '', type: 'expense', category: 'Food', date: today() })
     setEditingId(null)
   }
 
@@ -39,7 +41,13 @@ export default function BudgetTracker() {
   }
 
   const startEdit = (entry) => {
-    setForm({ description: entry.description, amount: String(entry.amount), type: entry.type, category: entry.category })
+    setForm({
+      description: entry.description,
+      amount: String(entry.amount),
+      type: entry.type,
+      category: entry.category,
+      date: entry.date || today(),
+    })
     setEditingId(entry.id)
   }
 
@@ -59,10 +67,13 @@ export default function BudgetTracker() {
       return acc
     }, {})
 
+  const { byMonth, months: monthsSorted } = groupByMonth(entries)
+
   const exportCSV = () =>
     downloadCSV(
       'budget-entries.csv',
       entries.map((e) => ({
+        date: e.date || '',
         description: e.description,
         type: e.type,
         category: e.type === 'expense' ? e.category : '',
@@ -98,6 +109,12 @@ export default function BudgetTracker() {
               <option value="expense">Expense</option>
               <option value="income">Income</option>
             </select>
+            <input
+              className="input"
+              type="date"
+              value={form.date}
+              onChange={(e) => setForm({ ...form, date: e.target.value })}
+            />
             {form.type === 'expense' && (
               <select
                 className="input sm:col-span-2"
@@ -137,7 +154,10 @@ export default function BudgetTracker() {
               <li key={e.id} className="py-2 flex justify-between items-center text-sm">
                 <div>
                   <div className="font-medium">{e.description}</div>
-                  <div className="text-slate-500 dark:text-slate-400 text-xs">{e.type === 'expense' ? e.category : 'Income'}</div>
+                  <div className="text-slate-500 dark:text-slate-400 text-xs">
+                    {e.type === 'expense' ? e.category : 'Income'}
+                    {e.date && ` · ${e.date}`}
+                  </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className={e.type === 'income' ? 'text-emerald-600' : 'text-red-500'}>
@@ -191,6 +211,31 @@ export default function BudgetTracker() {
               ))
           })()}
         </div>
+
+        {monthsSorted.length > 0 && (
+          <div className="card space-y-3">
+            <h2 className="font-semibold text-lg mb-2 dark:text-white">Monthly trend</h2>
+            {(() => {
+              const maxAbs = Math.max(...monthsSorted.map((m) => Math.abs(byMonth[m])), 1)
+              return monthsSorted.map((month) => (
+                <div key={month} className="space-y-1">
+                  <div className="flex justify-between text-sm">
+                    <span>{month}</span>
+                    <span className={byMonth[month] >= 0 ? 'text-emerald-600' : 'text-red-500'}>
+                      {format(byMonth[month])}
+                    </span>
+                  </div>
+                  <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                    <div
+                      className={`h-full rounded-full ${byMonth[month] >= 0 ? 'bg-emerald-500' : 'bg-red-500'}`}
+                      style={{ width: `${(Math.abs(byMonth[month]) / maxAbs) * 100}%` }}
+                    />
+                  </div>
+                </div>
+              ))
+            })()}
+          </div>
+        )}
       </div>
       </div>
     </div>
