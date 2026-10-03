@@ -13,6 +13,7 @@ const KEYS = [
   'networth.assets',
   'networth.liabilities',
   'networth.history',
+  'tip.form',
   'currency',
 ]
 

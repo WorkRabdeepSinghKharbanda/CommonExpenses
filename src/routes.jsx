@@ -3,6 +3,7 @@ import Dashboard from './pages/Dashboard.jsx'
 import DebtPayoff from './pages/DebtPayoff.jsx'
 import LoanCalculator from './pages/LoanCalculator.jsx'
 import NetWorth from './pages/NetWorth.jsx'
+import TipCalculator from './pages/TipCalculator.jsx'
 import SplitExpense from './pages/SplitExpense.jsx'
 import BudgetTracker from './pages/BudgetTracker.jsx'
 import RecurringBills from './pages/RecurringBills.jsx'
@@ -29,6 +30,7 @@ import GroceryExpenseGuide from './pages/guides/GroceryExpenseGuide.jsx'
 import GroupGiftGuide from './pages/guides/GroupGiftGuide.jsx'
 import EMIGuide from './pages/guides/EMIGuide.jsx'
 import NetWorthGuide from './pages/guides/NetWorthGuide.jsx'
+import TipGuide from './pages/guides/TipGuide.jsx'
 import SplitExpensesPillar from './pages/guides/SplitExpensesPillar.jsx'
 import BudgetPillar from './pages/guides/BudgetPillar.jsx'
 import BlogIndex from './pages/blog/BlogIndex.jsx'
@@ -67,6 +69,7 @@ export const ROUTES = [
   { path: '/debt-payoff', element: DebtPayoff, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/loan-calculator', element: LoanCalculator, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/net-worth', element: NetWorth, type: 'tool', changefreq: 'monthly', priority: 0.8 },
+  { path: '/tip-calculator', element: TipCalculator, type: 'tool', changefreq: 'monthly', priority: 0.8 },
   { path: '/privacy', element: PrivacyPolicy, type: 'legal', changefreq: 'yearly', priority: 0.3 },
   { path: '/about', element: About, type: 'legal', changefreq: 'yearly', priority: 0.3 },
 
@@ -104,6 +107,7 @@ export const ROUTES = [
   { path: '/group-gift-cost-splitter', element: GroupGiftGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
   { path: '/how-emi-is-calculated', element: EMIGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
   { path: '/how-to-calculate-net-worth', element: NetWorthGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
+  { path: '/how-much-should-you-tip', element: TipGuide, type: 'guide', changefreq: 'monthly', priority: 0.6 },
 
   { path: '/blog', element: BlogIndex, type: 'hub', changefreq: 'weekly', priority: 0.7 },
   { path: '/blog/audit-your-recurring-bills', element: AuditRecurringBills, type: 'post', changefreq: 'yearly', priority: 0.6 },

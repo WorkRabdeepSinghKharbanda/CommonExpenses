@@ -16,4 +16,5 @@ export const GUIDES = [
   { route: '/group-gift-cost-splitter', title: 'Group gift cost splitter calculator', category: 'split' },
   { route: '/how-emi-is-calculated', title: 'How EMI is calculated (reducing balance)', category: 'loans' },
   { route: '/how-to-calculate-net-worth', title: 'How to calculate your net worth', category: 'savings' },
+  { route: '/how-much-should-you-tip', title: 'How much should you tip?', category: 'split' },
 ]

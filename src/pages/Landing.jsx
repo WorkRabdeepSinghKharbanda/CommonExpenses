@@ -58,6 +58,12 @@ const features = [
     title: 'Net Worth',
     description: 'Track your assets and liabilities, and watch your net worth over time.',
   },
+  {
+    to: '/tip-calculator',
+    icon: '🧾',
+    title: 'Tip Calculator',
+    description: 'Calculate the tip and split the total evenly among any group size.',
+  },
 ]
 
 export default function Landing() {

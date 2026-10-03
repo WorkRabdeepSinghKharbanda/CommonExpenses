@@ -2,7 +2,7 @@
 
 Live: https://common-expenses-tracker.vercel.app
 
-Vite + React + Tailwind. Eight client-side calculators, data stored in `localStorage`, no backend.
+Vite + React + Tailwind. Nine client-side calculators, data stored in `localStorage`, no backend.
 
 - **Split Expense** — split a bill among people, edit/remove entries, settle-up suggestions, select-all/clear-all participants
 - **Budget Tracker** — income/expense log with edit support, category totals shown as bars
@@ -11,6 +11,7 @@ Vite + React + Tailwind. Eight client-side calculators, data stored in `localSto
 - **Debt Payoff Calculator** — snowball vs. avalanche payoff simulation, months to debt-free, total interest, side-by-side strategy comparison
 - **Loan / EMI Calculator** — reducing-balance monthly payment, total interest, full amortization schedule
 - **Net Worth Calculator** — itemized assets/liabilities, saved snapshots over time
+- **Tip Calculator** — tip amount, total, and per-person split for any group size
 - **Dashboard** — one overview pulling from all of the above, plus JSON backup/restore for all tracked data
 
 Other features:

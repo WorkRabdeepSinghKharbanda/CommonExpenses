@@ -12,6 +12,7 @@ const links = [
   { to: '/debt-payoff', label: 'Debt Payoff' },
   { to: '/loan-calculator', label: 'Loan / EMI' },
   { to: '/net-worth', label: 'Net Worth' },
+  { to: '/tip-calculator', label: 'Tip Calculator' },
 ]
 
 const linkClass = ({ isActive }) =>
