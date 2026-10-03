@@ -15,6 +15,7 @@ Vite + React + Tailwind. Nine client-side calculators, data stored in `localStor
 - **Dashboard** — one overview pulling from all of the above, plus JSON backup/restore for all tracked data
 
 Other features:
+- Installable PWA + offline support (hand-rolled service worker, no build plugin)
 - Dark/light theme toggle (persisted)
 - Currency selector: USD, INR, AUD, EUR (persisted, applies everywhere)
 - CSV export + clear-all per calculator

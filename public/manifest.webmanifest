@@ -1,0 +1,13 @@
+{
+  "name": "Common Expenses Tracker",
+  "short_name": "CET",
+  "description": "Free calculators to split bills, budget, track bills, save, pay off debt, and more — all data stays in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": [
+    { "src": "/favicon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
