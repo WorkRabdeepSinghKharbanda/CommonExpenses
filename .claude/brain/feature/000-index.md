@@ -29,3 +29,4 @@ index from there if they ever disagree.
 | 021 | [Tip Calculator](021-tip-calculator.md) | `/tip-calculator`, `/how-much-should-you-tip` | `src/pages/TipCalculator.jsx`, `src/lib/tipMath.js` |
 | 022 | [Navbar Tools Dropdown](022-navbar-tools-dropdown.md) | layout only | `src/components/Navbar.jsx` |
 | 023 | [PWA / Offline](023-pwa-offline.md) | app-shell only | `public/sw.js`, `public/manifest.webmanifest` |
+| 024 | [Shareable Split Link](024-shareable-split-link.md) | `/split?s=...` | `src/pages/SplitExpense.jsx`, `src/lib/shareLink.js` |

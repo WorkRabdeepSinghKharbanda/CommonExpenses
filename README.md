@@ -4,7 +4,7 @@ Live: https://common-expenses-tracker.vercel.app
 
 Vite + React + Tailwind. Nine client-side calculators, data stored in `localStorage`, no backend.
 
-- **Split Expense** — split a bill among people, edit/remove entries, settle-up suggestions, select-all/clear-all participants
+- **Split Expense** — split a bill among people, edit/remove entries, settle-up suggestions, select-all/clear-all participants, shareable link (round-trips state through the URL, no account needed)
 - **Budget Tracker** — income/expense log with edit support, category totals shown as bars
 - **Recurring Bills** — subscriptions/bills with edit support, "due soon" badge (within 7 days), monthly total
 - **Savings Goal** — required monthly saving to hit a target, with a progress bar

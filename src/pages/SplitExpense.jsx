@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useLocalState } from '../lib/useLocalState.js'
 import { useCurrency } from '../lib/CurrencyContext.jsx'
 import { downloadCSV } from '../lib/csv.js'
@@ -6,6 +7,7 @@ import { nonNegative } from '../lib/forms.js'
 import { useSeo } from '../lib/useSeo.js'
 import PageToolbar from '../components/PageToolbar.jsx'
 import { computeSettlements } from '../lib/splitMath.js'
+import { encodeSplitState, decodeSplitState } from '../lib/shareLink.js'
 
 export default function SplitExpense() {
   useSeo({
@@ -20,6 +22,49 @@ export default function SplitExpense() {
   const [personName, setPersonName] = useState('')
   const [form, setForm] = useState({ description: '', amount: '', payer: '', participants: [] })
   const [search, setSearch] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [pendingShare, setPendingShare] = useState(null)
+  const [shareCopied, setShareCopied] = useState(false)
+
+  // Runs once on mount only (empty deps, deliberately not re-running when
+  // searchParams changes) — decodes a shared ?s= link into a pending import
+  // the user must explicitly accept, rather than silently overwriting
+  // whatever they already have in this browser. Assumes a fresh navigation
+  // per share link (the normal flow); a second ?s= arriving via client-side
+  // navigation while this component stays mounted would not be re-processed.
+  useEffect(() => {
+    const encoded = searchParams.get('s')
+    if (!encoded) return
+    const decoded = decodeSplitState(encoded)
+    if (decoded) setPendingShare(decoded)
+    // Drop ?s= from the URL either way, so refreshing the page or sharing
+    // the (now-local) URL again doesn't re-trigger the same prompt.
+    setSearchParams({}, { replace: true })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const acceptSharedSplit = () => {
+    if (!pendingShare) return
+    const hasExistingData = people.length > 0 || expenses.length > 0
+    if (hasExistingData && !confirm('This replaces your current split data with no undo. Continue?')) return
+    setPeople(pendingShare.people)
+    setExpenses(pendingShare.expenses)
+    setPendingShare(null)
+  }
+
+  const shareSplit = async () => {
+    const encoded = encodeSplitState(people, expenses)
+    const url = `${window.location.origin}/split?s=${encoded}`
+    try {
+      await navigator.clipboard.writeText(url)
+      setShareCopied(true)
+      setTimeout(() => setShareCopied(false), 2000)
+    } catch {
+      // Clipboard API unavailable (e.g. insecure context, permissions) —
+      // fall back to a prompt so the user can still copy it manually.
+      window.prompt('Copy this link:', url)
+    }
+  }
 
   const addPerson = (e) => {
     e.preventDefault()
@@ -74,6 +119,28 @@ export default function SplitExpense() {
   return (
     <div>
       <PageToolbar title="Split Expense" onExport={expenses.length > 0 ? exportCSV : undefined} onClear={clearAll} />
+
+      {pendingShare && (
+        <div className="card mb-6 flex flex-wrap items-center justify-between gap-3 border-brand-300 dark:border-brand-700">
+          <p className="text-sm text-slate-600 dark:text-slate-300">
+            Someone shared a split with {pendingShare.people.length} people and {pendingShare.expenses.length} expenses.{' '}
+            <strong className="text-slate-900 dark:text-white">Importing replaces</strong> what's currently in this browser — there's no undo.
+          </p>
+          <div className="flex gap-2 shrink-0">
+            <button onClick={acceptSharedSplit} className="btn-primary text-sm">Import</button>
+            <button onClick={() => setPendingShare(null)} className="btn-secondary text-sm">Dismiss</button>
+          </div>
+        </div>
+      )}
+
+      {people.length > 0 && (
+        <div className="flex justify-end mb-4">
+          <button onClick={shareSplit} className="btn-secondary text-sm">
+            {shareCopied ? 'Link copied!' : 'Share this split'}
+          </button>
+        </div>
+      )}
+
       <div className="grid lg:grid-cols-3 gap-6">
       <div className="card space-y-4">
         <h2 className="font-semibold text-lg dark:text-white">People</h2>
