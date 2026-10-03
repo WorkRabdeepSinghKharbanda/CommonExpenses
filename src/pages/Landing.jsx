@@ -52,6 +52,12 @@ const features = [
     title: 'Loan / EMI',
     description: 'Calculate your real monthly payment and full amortization schedule.',
   },
+  {
+    to: '/net-worth',
+    icon: '📈',
+    title: 'Net Worth',
+    description: 'Track your assets and liabilities, and watch your net worth over time.',
+  },
 ]
 
 export default function Landing() {

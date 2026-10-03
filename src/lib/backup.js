@@ -10,6 +10,9 @@ const KEYS = [
   'debtpayoff.debts',
   'debtpayoff.settings',
   'loan.form',
+  'networth.assets',
+  'networth.liabilities',
+  'networth.history',
   'currency',
 ]
 

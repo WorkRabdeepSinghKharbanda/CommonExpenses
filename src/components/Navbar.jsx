@@ -11,6 +11,7 @@ const links = [
   { to: '/savings', label: 'Savings Goal' },
   { to: '/debt-payoff', label: 'Debt Payoff' },
   { to: '/loan-calculator', label: 'Loan / EMI' },
+  { to: '/net-worth', label: 'Net Worth' },
 ]
 
 const linkClass = ({ isActive }) =>

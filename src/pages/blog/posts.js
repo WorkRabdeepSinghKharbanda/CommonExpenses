@@ -203,4 +203,13 @@ export const POSTS = [
     date: '2026-06-25',
     category: 'loans',
   },
+  {
+    slug: 'net-worth-vs-income',
+    title: "Net worth vs. income: why a bigger paycheck doesn't automatically mean you're wealthier",
+    seoTitle: 'Net Worth vs. Income',
+    description:
+      'Income and net worth measure completely different things — a high earner can have a lower net worth than someone earning less but saving consistently.',
+    date: '2026-07-02',
+    category: 'savings',
+  },
 ]

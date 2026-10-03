@@ -7,12 +7,13 @@ import { computeSettlements } from '../lib/splitMath.js'
 import { exportAllData, importAllData } from '../lib/backup.js'
 import { FREQUENCIES, nextDueDate } from '../lib/bills.js'
 import { simulatePayoff } from '../lib/debtPayoff.js'
+import { computeNetWorth } from '../lib/netWorth.js'
 
 export default function Dashboard() {
   useSeo({
     title: 'Dashboard | Common Expenses Tracker',
     description:
-      'One overview of your budget balance, upcoming bills, savings progress, debt payoff, and split-expense balances, pulled from every calculator.',
+      'One overview of your budget balance, upcoming bills, savings progress, debt payoff, net worth, and split-expense balances, pulled from every calculator.',
     path: '/dashboard',
   })
   const { format } = useCurrency()
@@ -23,6 +24,8 @@ export default function Dashboard() {
   const [savingsForm] = useLocalState('savings.form', { target: '10000', current: '0', months: '12', annualRate: '0' })
   const [debts] = useLocalState('debtpayoff.debts', [])
   const [debtSettings] = useLocalState('debtpayoff.settings', { extraMonthly: '100', strategy: 'avalanche' })
+  const [assets] = useLocalState('networth.assets', [])
+  const [liabilities] = useLocalState('networth.liabilities', [])
 
   const [importError, setImportError] = useState('')
   const fileInputRef = useRef(null)
@@ -51,7 +54,11 @@ export default function Dashboard() {
   const debtResult = debts.length > 0 ? simulatePayoff(debts, parseFloat(debtSettings.extraMonthly) || 0, debtSettings.strategy) : null
   const totalDebt = debts.reduce((s, d) => s + d.balance, 0)
 
-  const hasAnyData = people.length > 0 || entries.length > 0 || bills.length > 0 || current > 0 || debts.length > 0
+  const { netWorth } = computeNetWorth(assets, liabilities)
+  const hasNetWorthData = assets.length > 0 || liabilities.length > 0
+
+  const hasAnyData =
+    people.length > 0 || entries.length > 0 || bills.length > 0 || current > 0 || debts.length > 0 || hasNetWorthData
 
   const handleImport = async (e) => {
     const file = e.target.files?.[0]
@@ -126,6 +133,16 @@ export default function Dashboard() {
               : debts.length > 0
                 ? 'Increase payments to pay it off'
                 : 'No debts tracked'}
+          </div>
+        </Link>
+
+        <Link to="/net-worth" className="card space-y-1 hover:border-brand-400 border border-transparent">
+          <div className="text-xs font-semibold uppercase text-slate-400">Net worth</div>
+          <div className={`text-2xl font-bold ${netWorth >= 0 ? 'text-emerald-600' : 'text-red-500'}`}>
+            {hasNetWorthData ? format(netWorth) : '—'}
+          </div>
+          <div className="text-xs text-slate-500 dark:text-slate-400">
+            {hasNetWorthData ? `${assets.length} assets · ${liabilities.length} liabilities` : 'Not tracked yet'}
           </div>
         </Link>
       </div>

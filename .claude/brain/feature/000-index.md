@@ -25,3 +25,4 @@ index from there if they ever disagree.
 | 017 | [Dashboard & Backup](017-dashboard-backup.md) | `/dashboard` | `src/pages/Dashboard.jsx`, `src/lib/backup.js` |
 | 018 | [Debt Payoff Calculator](018-debt-payoff-calculator.md) | `/debt-payoff` | `src/pages/DebtPayoff.jsx`, `src/lib/debtPayoff.js` |
 | 019 | [Loan / EMI Calculator](019-loan-emi-calculator.md) | `/loan-calculator` + 3 more, see file | `src/pages/LoanCalculator.jsx`, `src/lib/loanMath.js` |
+| 020 | [Net Worth Calculator](020-net-worth-calculator.md) | `/net-worth` + 2 more, see file | `src/pages/NetWorth.jsx`, `src/lib/netWorth.js` |

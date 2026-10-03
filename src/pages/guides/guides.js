@@ -15,4 +15,5 @@ export const GUIDES = [
   { route: '/grocery-expense-splitter', title: 'Grocery expense splitter for roommates', category: 'split' },
   { route: '/group-gift-cost-splitter', title: 'Group gift cost splitter calculator', category: 'split' },
   { route: '/how-emi-is-calculated', title: 'How EMI is calculated (reducing balance)', category: 'loans' },
+  { route: '/how-to-calculate-net-worth', title: 'How to calculate your net worth', category: 'savings' },
 ]
