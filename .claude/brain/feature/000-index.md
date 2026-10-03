@@ -27,3 +27,4 @@ index from there if they ever disagree.
 | 019 | [Loan / EMI Calculator](019-loan-emi-calculator.md) | `/loan-calculator` + 3 more, see file | `src/pages/LoanCalculator.jsx`, `src/lib/loanMath.js` |
 | 020 | [Net Worth Calculator](020-net-worth-calculator.md) | `/net-worth` + 2 more, see file | `src/pages/NetWorth.jsx`, `src/lib/netWorth.js` |
 | 021 | [Tip Calculator](021-tip-calculator.md) | `/tip-calculator`, `/how-much-should-you-tip` | `src/pages/TipCalculator.jsx`, `src/lib/tipMath.js` |
+| 022 | [Navbar Tools Dropdown](022-navbar-tools-dropdown.md) | layout only | `src/components/Navbar.jsx` |
